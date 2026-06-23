@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ibérica Fresh Trading BV — Verse producten uit Spanje</title>
+  <meta name="description" content="Directe import van verse AGF en zeevruchten uit Spanje naar Nederlandse groothandels, horeca en speciaalzaken."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --wit:        #FAFAF6;
+      --zand:       #F2EDE3;
+      --olijf:      #3D5A3E;
+      --olijf-licht:#5A7A5B;
+      --olijf-pale: #EBF0E8;
+      --terra:      #C4622D;
+      --terra-licht:#F0E4DA;
+      --kool:       #1A1A14;
+      --grijs:      #6B6B5E;
+      --lijn:       #D8D3C8;
+      --zon:        #E8B84B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--wit);
+      color: var(--kool);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,246,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--lijn);
+      padding: 0 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--kool); text-decoration: none;
+      letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--terra); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: .875rem; font-weight: 500;
+      color: var(--grijs); text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--olijf); }
+
+    .nav-cta {
+      background: var(--olijf); color: #fff !important;
+      padding: .5rem 1.25rem; border-radius: 6px;
+      font-size: .875rem !important; font-weight: 600 !important;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--olijf-licht) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      background: var(--olijf);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-left {
+      padding: 8vw 5vw 8vw 8vw;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: .75rem; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--zon);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700; line-height: 1.1;
+      color: #fff; margin-bottom: 1.5rem;
+    }
+    .hero-title em {
+      font-style: italic; color: var(--zon);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,.75);
+      max-width: 42ch; margin-bottom: 2.5rem; line-height: 1.7;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--terra); color: #fff;
+      padding: .875rem 2rem; border-radius: 6px;
+      font-size: .9375rem; font-weight: 600;
+      text-decoration: none; display: inline-block;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: #b5561f; transform: translateY(-1px); }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255,255,255,.35); color: #fff;
+      padding: .875rem 2rem; border-radius: 6px;
+      font-size: .9375rem; font-weight: 500;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .5rem;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+
+    .hero-right {
+      position: relative; overflow: hidden;
+    }
+
+    /* Mediterrane illustratie: gestileerd landschap */
+    .hero-illustration {
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(ellipse 60% 40% at 70% 60%, rgba(228,180,100,.18) 0%, transparent 70%),
+        linear-gradient(160deg, #2D4A2E 0%, #3D5A3E 40%, #4A6B4B 100%);
+      position: relative;
+    }
+
+    .hero-illustration::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle 120px at 65% 35%, rgba(232,184,75,.12) 0%, transparent 70%),
+        radial-gradient(circle 200px at 80% 70%, rgba(196,98,45,.08) 0%, transparent 70%);
+    }
+
+    /* Floatende badges */
+    .float-badge {
+      position: absolute;
+      background: rgba(250,250,246,.95);
+      border: 1.5px solid var(--lijn);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-1 { top: 20%; right: 8%; }
+    .badge-2 { bottom: 28%; left: 8%; }
+    .badge-3 { top: 55%; right: 12%; }
+
+    .badge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem; font-weight: 700;
+      color: var(--olijf); line-height: 1;
+    }
+    .badge-label {
+      font-size: .75rem; color: var(--grijs); margin-top: .25rem;
+    }
+
+    /* ── SECTIES ALGEMEEN ── */
+    section { padding: 6rem 5vw; }
+
+    .section-eyebrow {
+      font-size: .75rem; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--terra);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 700; line-height: 1.15;
+      color: var(--kool); margin-bottom: 1.25rem;
+    }
+
+    .section-body {
+      font-size: 1.0625rem; color: var(--grijs);
+      max-width: 58ch; line-height: 1.75;
+    }
+
+    /* ── WAAROM ── */
+    .waarom { background: var(--zand); }
+
+    .waarom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem; align-items: start;
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    .waarom-intro { padding-top: 1rem; }
+
+    .redenen { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+
+    .reden {
+      display: grid; grid-template-columns: 48px 1fr; gap: 1rem;
+      align-items: start;
+    }
+
+    .reden-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: var(--olijf-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; flex-shrink: 0;
+    }
+
+    .reden h3 {
+      font-size: 1rem; font-weight: 600; color: var(--kool);
+      margin-bottom: .25rem;
+    }
+    .reden p { font-size: .9375rem; color: var(--grijs); line-height: 1.65; }
+
+    /* ── WERKGEBIED ── */
+    .werkgebied { background: var(--wit); }
+    .werkgebied-inner { max-width: 1100px; margin: 0 auto; }
+
+    .werkgebied-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; margin-bottom: 4rem; align-items: end;
+    }
+
+    .klant-types {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .klant-card {
+      background: var(--zand); border: 1.5px solid var(--lijn);
+      border-radius: 10px; padding: 1.5rem;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .klant-card:hover {
+      border-color: var(--olijf-licht);
+      box-shadow: 0 4px 16px rgba(61,90,62,.08);
+    }
+
+    .klant-emoji { font-size: 1.75rem; margin-bottom: .75rem; display: block; }
+    .klant-card h3 { font-size: .9375rem; font-weight: 600; color: var(--kool); margin-bottom: .375rem; }
+    .klant-card p { font-size: .875rem; color: var(--grijs); line-height: 1.55; }
+
+    /* ── REGIO BANNER ── */
+    .regio-banner {
+      background: var(--olijf); padding: 3rem 5vw;
+      display: flex; align-items: center; justify-content: center;
+      gap: 4rem; flex-wrap: wrap;
+    }
+
+    .regio-item { text-align: center; color: #fff; }
+    .regio-item .flag { font-size: 2rem; margin-bottom: .5rem; }
+    .regio-item strong { display: block; font-size: 1rem; font-weight: 600; }
+    .regio-item span { font-size: .8125rem; color: rgba(255,255,255,.65); }
+
+    .regio-divider {
+      width: 1px; height: 48px;
+      background: rgba(255,255,255,.2);
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--zand); }
+    .contact-inner {
+      max-width: 960px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+
+    .contact-info { padding-top: 1rem; }
+
+    .contact-detail {
+      display: flex; gap: .875rem; align-items: flex-start;
+      margin-top: 1.5rem;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: var(--olijf-pale); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-detail-text strong { display: block; font-size: .875rem; font-weight: 600; color: var(--kool); }
+    .contact-detail-text span { font-size: .875rem; color: var(--grijs); }
+    .contact-detail-text a { color: var(--olijf); text-decoration: none; font-weight: 500; }
+    .contact-detail-text a:hover { text-decoration: underline; }
+
+    /* Formulier */
+    .form-card {
+      background: var(--wit); border: 1.5px solid var(--lijn);
+      border-radius: 12px; padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,.06);
+    }
+
+    .form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--kool); margin-bottom: 1.5rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: .375rem; margin-bottom: 1rem; }
+    .form-group label { font-size: .8125rem; font-weight: 600; color: var(--grijs); letter-spacing: .04em; text-transform: uppercase; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: .75rem 1rem;
+      border: 1.5px solid var(--lijn); border-radius: 6px;
+      font-size: .9375rem; color: var(--kool);
+      background: var(--wit); outline: none;
+      font-family: inherit; width: 100%;
+      transition: border-color .2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--olijf); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      background: var(--olijf); color: #fff;
+      border: none; border-radius: 6px;
+      padding: .875rem 2rem; font-size: .9375rem; font-weight: 600;
+      cursor: pointer; width: 100%; font-family: inherit;
+      transition: background .2s;
+    }
+    .form-submit:hover { background: var(--olijf-licht); }
+
+    .form-note { font-size: .8125rem; color: var(--grijs); text-align: center; margin-top: .75rem; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .whatsapp-float {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      background: #25D366; color: #fff;
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      z-index: 50; transition: transform .2s, box-shadow .2s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,.5);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--kool); color: rgba(255,255,255,.5);
+      padding: 2.5rem 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: #fff; text-decoration: none;
+    }
+    .footer-logo span { color: var(--terra); }
+
+    footer p { font-size: .8125rem; }
+    footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    /* ── SUCCES STATE FORM ── */
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+    }
+    .form-success .check { font-size: 3rem; margin-bottom: 1rem; }
+    .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--olijf); margin-bottom: .5rem; }
+    .form-success p { color: var(--grijs); font-size: .9375rem; }
+
+    /* ── RESPONSIEF ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 5rem 6vw 3rem; }
+      .hero-right { height: 280px; }
+      .badge-3 { display: none; }
+      .waarom-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .werkgebied-header { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .regio-divider { display: none; }
+      .regio-banner { gap: 2rem; }
+    }
+
+    /* ── ANIMATIES ── */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        opacity: 0; transform: translateY(20px);
+        transition: opacity .6s ease, transform .6s ease;
+      }
+      .fade-in.visible { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Ibérica Fresh <span>Trading</span></a>
+  <ul class="nav-links">
+    <li><a href="#waarom">Waarom wij</a></li>
+    <li><a href="#werkgebied">Werkgebied</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Offerte aanvragen</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Directe import uit Spanje · Vers gegarandeerd</p>
+    <h1 class="hero-title">
+      Van Spaans veld<br/>
+      naar <em>Nederlandse</em><br/>
+      koelcel
+    </h1>
+    <p class="hero-sub">
+      Ibérica Fresh haalt dagverse AGF en zeevruchten rechtstreeks bij telers en vissers in Spanje op — zonder tussenschakels, met volle traceerbaarheid.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Neem contact op</a>
+      <a href="#waarom" class="btn-ghost">
+        <span>Meer over ons</span>
+        <span>↓</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-illustration">
+      <div class="float-badge badge-1">
+        <div class="badge-num">48u</div>
+        <div class="badge-label">Van oogst tot levering</div>
+      </div>
+      <div class="float-badge badge-2">
+        <div class="badge-num">2</div>
+        <div class="badge-label">Productstromen: AGF & Vis</div>
+      </div>
+      <div class="float-badge badge-3">
+        <div class="badge-num">100%</div>
+        <div class="badge-label">Traceerbaarheid</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGIO BANNER -->
+<div class="regio-banner">
+  <div class="regio-item">
+    <div class="flag">🥦</div>
+    <strong>Murcia & Valencia</strong>
+    <span>Tomaten, paprika, citrus</span>
+  </div>
+  <div class="regio-divider"></div>
+  <div class="regio-item">
+    <div class="flag">🌿</div>
+    <strong>Almería & Andalusië</strong>
+    <span>Courgette, aubergine, venkel</span>
+  </div>
+  <div class="regio-divider"></div>
+  <div class="regio-item">
+    <div class="flag">🐟</div>
+    <strong>Vigo & Galicië</strong>
+    <span>Gambas, octopus, heek</span>
+  </div>
+  <div class="regio-divider"></div>
+  <div class="regio-item">
+    <div class="flag">🚛</div>
+    <strong>Rotterdam</strong>
+    <span>Uw leveradres</span>
+  </div>
+</div>
+
+<!-- WAAROM IBÉRICA FRESH -->
+<section class="waarom" id="waarom">
+  <div class="waarom-grid">
+    <div class="waarom-intro fade-in">
+      <p class="section-eyebrow">Waarom Ibérica Fresh?</p>
+      <h2 class="section-title">Minder schakels, versere producten</h2>
+      <p class="section-body">
+        De meeste verse producten uit Spanje passeren twee tot drie tussenhandelaren voor ze bij u aankomen. Wij werken rechtstreeks met telers en coöperaties — dat betekent betere kwaliteit, eerlijkere prijzen en volledige transparantie over herkomst.
+      </p>
+    </div>
+    <div class="redenen fade-in">
+      <div class="reden">
+        <div class="reden-icon">🌱</div>
+        <div>
+          <h3>Directe telerrelaties</h3>
+          <p>We werken met vaste telers in Murcia, Valencia en Almería met wie we meerjarige prijsafspraken maken. Geen veiling, geen makelaar.</p>
+        </div>
+      </div>
+      <div class="reden">
+        <div class="reden-icon">🌡️</div>
+        <div>
+          <h3>Koude keten bewaakt</h3>
+          <p>Elke rit wordt geregistreerd met ingangs- en uitgangstemperatuur. U ontvangt bij levering altijd een temperatuurrapport.</p>
+        </div>
+      </div>
+      <div class="reden">
+        <div class="reden-icon">📋</div>
+        <div>
+          <h3>HACCP-gecertificeerd</h3>
+          <p>Elke partij wordt bij binnenkomst gecontroleerd op temperatuur, conditie, THT en allergenen. Volledig gedocumenteerd.</p>
+        </div>
+      </div>
+      <div class="reden">
+        <div class="reden-icon">🔍</div>
+        <div>
+          <h3>Lot-naar-klant traceerbaarheid</h3>
+          <p>Mocht er ooit een recall nodig zijn, kunnen wij binnen minuten alle afnemers van een specifiek lot traceren en informeren.</p>
+        </div>
+      </div>
+      <div class="reden">
+        <div class="reden-icon">💶</div>
+        <div>
+          <h3>Transparante prijsstelling</h3>
+          <p>Vaste wekelijkse prijslijst, geen verborgen kosten. BTW-verlegging op Spaanse inkopen, correct afgehandeld.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WERKGEBIED & KLANTEN -->
+<section class="werkgebied" id="werkgebied">
+  <div class="werkgebied-inner">
+    <div class="werkgebied-header fade-in">
+      <div>
+        <p class="section-eyebrow">Voor wie</p>
+        <h2 class="section-title">Wij leveren aan bedrijven die kwaliteit verwachten</h2>
+      </div>
+      <p class="section-body">
+        Onze klanten zijn groothandels, etnische supermarkten, horecagroothandels en speciaalzaken in de Randstad die wekelijks verse producten nodig hebben met betrouwbare levering en goede documentatie.
+      </p>
+    </div>
+    <div class="klant-types fade-in">
+      <div class="klant-card">
+        <span class="klant-emoji">🏪</span>
+        <h3>Etnische supermarkten</h3>
+        <p>Verse AGF en vis die nauwelijks te vinden zijn bij reguliere grossiers — in de kwaliteit die uw klanten gewend zijn.</p>
+      </div>
+      <div class="klant-card">
+        <span class="klant-emoji">🏭</span>
+        <h3>Groothandels</h3>
+        <p>Palletleveringen met consistente kwaliteit en alle documentatie die u nodig heeft voor uw eigen klanten.</p>
+      </div>
+      <div class="klant-card">
+        <span class="klant-emoji">🍽️</span>
+        <h3>Horeca & catering</h3>
+        <p>Verse seizoensproducten met korte levertijden, ideaal voor keukens die werken met Spaans of mediterraan aanbod.</p>
+      </div>
+      <div class="klant-card">
+        <span class="klant-emoji">🐟</span>
+        <h3>Visspeciaalzaken</h3>
+        <p>Gambas, octopus, heek en andere Atlantische soorten — recht uit Vigo, vers en volledig gecertificeerd.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info fade-in">
+      <p class="section-eyebrow">Contact</p>
+      <h2 class="section-title">Laten we kennismaken</h2>
+      <p class="section-body">
+        Stuur ons een bericht via het formulier, of neem direct contact op. We reageren binnen één werkdag.
+      </p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div class="contact-detail-text">
+          <strong>Locatie</strong>
+          <span>Rotterdam, Nederland</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📧</div>
+        <div class="contact-detail-text">
+          <strong>E-mail</strong>
+          <a href="mailto:info@ibericafresh.nl">info@ibericafresh.nl</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📱</div>
+        <div class="contact-detail-text">
+          <strong>WhatsApp / Telefoon</strong>
+          <a href="https://wa.me/31600000000">+31 6 00 00 00 00</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🕐</div>
+        <div class="contact-detail-text">
+          <strong>Reactietijd</strong>
+          <span>Binnen 1 werkdag</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <div class="form-card" id="form-card">
+        <h3>Stuur een bericht</h3>
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Voornaam</label>
+              <input type="text" placeholder="Jan" required/>
+            </div>
+            <div class="form-group">
+              <label>Achternaam</label>
+              <input type="text" placeholder="Bakker" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Bedrijfsnaam</label>
+            <input type="text" placeholder="Uw bedrijf" required/>
+          </div>
+          <div class="form-group">
+            <label>E-mailadres</label>
+            <input type="email" placeholder="u@bedrijf.nl" required/>
+          </div>
+          <div class="form-group">
+            <label>Wat zoekt u?</label>
+            <select required>
+              <option value="">— Kies een categorie —</option>
+              <option>Verse AGF (groenten & fruit)</option>
+              <option>Zeevruchten & vis</option>
+              <option>AGF én zeevruchten</option>
+              <option>Meer informatie / kennismaking</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Bericht</label>
+            <textarea placeholder="Beschrijf kort uw behoefte — welke producten, volumes, leverfrequentie..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Verstuur bericht</button>
+          <p class="form-note">We reageren binnen 1 werkdag via e-mail.</p>
+        </form>
+        <div class="form-success" id="form-success">
+          <div class="check">✅</div>
+          <h3>Bericht ontvangen!</h3>
+          <p>Bedankt voor uw interesse. We nemen binnen één werkdag contact met u op.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#top" class="footer-logo">Ibérica Fresh <span>Trading</span> BV</a>
+  <p>KvK: [nummer na oprichting] · Rotterdam</p>
+  <p>© 2026 Ibérica Fresh Trading BV · <a href="mailto:info@ibericafresh.nl">info@ibericafresh.nl</a></p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20heb%20interesse%20in%20uw%20producten." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // Scroll animaties
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Formulier
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>
