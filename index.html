@@ -22,6 +22,7 @@
       --grijs:      #6B6B5E;
       --lijn:       #D8D3C8;
       --zon:        #E8B84B;
+      --wa-groen:   #25D366;
     }
 
     html { scroll-behavior: smooth; }
@@ -53,7 +54,7 @@
     }
     .nav-logo span { color: var(--terra); }
 
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
     .nav-links a {
       font-size: .875rem; font-weight: 500;
       color: var(--grijs); text-decoration: none;
@@ -97,9 +98,7 @@
       font-weight: 700; line-height: 1.1;
       color: #fff; margin-bottom: 1.5rem;
     }
-    .hero-title em {
-      font-style: italic; color: var(--zon);
-    }
+    .hero-title em { font-style: italic; color: var(--zon); }
 
     .hero-sub {
       font-size: 1.1rem; color: rgba(255,255,255,.75);
@@ -126,11 +125,19 @@
     }
     .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
 
-    .hero-right {
-      position: relative; overflow: hidden;
+    /* [2] WhatsApp hero-knop */
+    .btn-wa {
+      background: var(--wa-groen); color: #fff;
+      padding: .875rem 2rem; border-radius: 6px;
+      font-size: .9375rem; font-weight: 600;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .625rem;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
     }
+    .btn-wa:hover { background: #1fb857; transform: translateY(-1px); }
 
-    /* Mediterrane illustratie: gestileerd landschap */
+    .hero-right { position: relative; overflow: hidden; }
+
     .hero-illustration {
       width: 100%; height: 100%;
       background:
@@ -147,7 +154,6 @@
         radial-gradient(circle 200px at 80% 70%, rgba(196,98,45,.08) 0%, transparent 70%);
     }
 
-    /* Floatende badges */
     .float-badge {
       position: absolute;
       background: rgba(250,250,246,.95);
@@ -157,7 +163,6 @@
       box-shadow: 0 8px 32px rgba(0,0,0,.12);
       backdrop-filter: blur(8px);
     }
-
     .badge-1 { top: 20%; right: 8%; }
     .badge-2 { bottom: 28%; left: 8%; }
     .badge-3 { top: 55%; right: 12%; }
@@ -167,9 +172,7 @@
       font-size: 1.75rem; font-weight: 700;
       color: var(--olijf); line-height: 1;
     }
-    .badge-label {
-      font-size: .75rem; color: var(--grijs); margin-top: .25rem;
-    }
+    .badge-label { font-size: .75rem; color: var(--grijs); margin-top: .25rem; }
 
     /* ── SECTIES ALGEMEEN ── */
     section { padding: 6rem 5vw; }
@@ -190,6 +193,41 @@
     .section-body {
       font-size: 1.0625rem; color: var(--grijs);
       max-width: 58ch; line-height: 1.75;
+    }
+
+    /* ── [2] WHATSAPP PRIJSLIJST BANNER ── */
+    .wa-banner {
+      background: linear-gradient(135deg, #1A3A1B 0%, #2D5A2E 100%);
+      padding: 2.5rem 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+
+    .wa-banner-text { flex: 1; min-width: 240px; }
+    .wa-banner-text strong {
+      display: block; color: #fff;
+      font-size: 1.125rem; font-weight: 700; margin-bottom: .375rem;
+    }
+    .wa-banner-text span {
+      color: rgba(255,255,255,.65); font-size: .9375rem;
+    }
+
+    .wa-banner-cta {
+      background: var(--wa-groen); color: #fff;
+      padding: .875rem 2rem; border-radius: 8px;
+      font-size: .9375rem; font-weight: 700;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .625rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,.35);
+      transition: background .2s, transform .15s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .wa-banner-cta:hover { background: #1fb857; transform: translateY(-1px); }
+
+    .wa-badge {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      border-radius: 6px; padding: .5rem .875rem;
+      color: rgba(255,255,255,.8); font-size: .8125rem;
+      display: inline-flex; align-items: center; gap: .4rem;
     }
 
     /* ── WAAROM ── */
@@ -218,14 +256,89 @@
       font-size: 1.25rem; flex-shrink: 0;
     }
 
-    .reden h3 {
-      font-size: 1rem; font-weight: 600; color: var(--kool);
-      margin-bottom: .25rem;
-    }
+    .reden h3 { font-size: 1rem; font-weight: 600; color: var(--kool); margin-bottom: .25rem; }
     .reden p { font-size: .9375rem; color: var(--grijs); line-height: 1.65; }
 
+    /* ── [3] ASSORTIMENT ── */
+    .assortiment { background: var(--wit); }
+    .assortiment-inner { max-width: 1100px; margin: 0 auto; }
+
+    .assortiment-header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .assortiment-header .section-body { margin: 0 auto; }
+
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .prod-card {
+      border-radius: 12px; overflow: hidden;
+      border: 1.5px solid var(--lijn);
+      background: var(--wit);
+      transition: box-shadow .2s, transform .2s;
+      cursor: default;
+    }
+    .prod-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,.10);
+      transform: translateY(-3px);
+    }
+
+    .prod-img {
+      width: 100%; aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* Kleur-achtergronden per categorie */
+    .prod-img.agf  { background: linear-gradient(135deg, #EBF5E9 0%, #D4E8D1 100%); }
+    .prod-img.vis  { background: linear-gradient(135deg, #E6EFF6 0%, #C8DCF0 100%); }
+    .prod-img.citrus { background: linear-gradient(135deg, #FEF9E7 0%, #F9ECC0 100%); }
+
+    .prod-tag {
+      position: absolute; top: .75rem; left: .75rem;
+      background: rgba(250,250,246,.9); border: 1px solid var(--lijn);
+      border-radius: 20px; padding: .25rem .625rem;
+      font-size: .6875rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--grijs);
+    }
+    .prod-tag.high-runner {
+      background: var(--zon); border-color: transparent; color: var(--kool);
+    }
+
+    .prod-info { padding: 1rem 1.125rem 1.25rem; }
+    .prod-info h3 { font-size: .9375rem; font-weight: 700; color: var(--kool); margin-bottom: .25rem; }
+    .prod-info .prod-regio { font-size: .8125rem; color: var(--grijs); }
+    .prod-info .prod-verpakking {
+      margin-top: .5rem; font-size: .75rem; color: var(--olijf);
+      font-weight: 600; letter-spacing: .04em;
+    }
+
+    .prod-tabs {
+      display: flex; gap: .75rem; margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .prod-tab {
+      padding: .4rem 1rem; border-radius: 20px;
+      border: 1.5px solid var(--lijn); background: none;
+      font-size: .8125rem; font-weight: 600; color: var(--grijs);
+      cursor: pointer; font-family: inherit;
+      transition: all .15s;
+    }
+    .prod-tab.active {
+      background: var(--olijf); border-color: var(--olijf); color: #fff;
+    }
+    .prod-tab:hover:not(.active) { border-color: var(--olijf); color: var(--olijf); }
+
+    .prod-section { display: none; }
+    .prod-section.active { display: grid; }
+
     /* ── WERKGEBIED ── */
-    .werkgebied { background: var(--wit); }
+    .werkgebied { background: var(--zand); }
     .werkgebied-inner { max-width: 1100px; margin: 0 auto; }
 
     .werkgebied-header {
@@ -239,7 +352,7 @@
     }
 
     .klant-card {
-      background: var(--zand); border: 1.5px solid var(--lijn);
+      background: var(--wit); border: 1.5px solid var(--lijn);
       border-radius: 10px; padding: 1.5rem;
       transition: border-color .2s, box-shadow .2s;
     }
@@ -264,9 +377,15 @@
     .regio-item strong { display: block; font-size: 1rem; font-weight: 600; }
     .regio-item span { font-size: .8125rem; color: rgba(255,255,255,.65); }
 
-    .regio-divider {
-      width: 1px; height: 48px;
-      background: rgba(255,255,255,.2);
+    .regio-divider { width: 1px; height: 48px; background: rgba(255,255,255,.2); }
+
+    /* ── [4] LOCATIE BADGE ── */
+    .locatie-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 6px; padding: .375rem .75rem;
+      font-size: .8125rem; color: rgba(255,255,255,.85);
+      margin-top: 1rem;
     }
 
     /* ── CONTACT ── */
@@ -294,7 +413,6 @@
     .contact-detail-text a { color: var(--olijf); text-decoration: none; font-weight: 500; }
     .contact-detail-text a:hover { text-decoration: underline; }
 
-    /* Formulier */
     .form-card {
       background: var(--wit); border: 1.5px solid var(--lijn);
       border-radius: 12px; padding: 2rem;
@@ -341,7 +459,7 @@
     /* ── WHATSAPP FLOAT ── */
     .whatsapp-float {
       position: fixed; bottom: 1.5rem; right: 1.5rem;
-      background: #25D366; color: #fff;
+      background: var(--wa-groen); color: #fff;
       width: 56px; height: 56px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.5rem; text-decoration: none;
@@ -372,10 +490,44 @@
     footer a { color: rgba(255,255,255,.5); text-decoration: none; }
     footer a:hover { color: #fff; }
 
-    /* ── SUCCES STATE FORM ── */
-    .form-success {
-      display: none; text-align: center; padding: 2rem;
+    /* ── WA AANMELDEN MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 1rem;
     }
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--wit); border-radius: 14px;
+      padding: 2.5rem; width: 100%; max-width: 400px;
+      box-shadow: 0 24px 64px rgba(0,0,0,.25);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; cursor: pointer;
+      font-size: 1.25rem; color: var(--grijs); line-height: 1;
+    }
+    .modal h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.375rem; font-weight: 700;
+      color: var(--kool); margin-bottom: .375rem;
+    }
+    .modal p { font-size: .9rem; color: var(--grijs); margin-bottom: 1.5rem; }
+    .modal .form-group { margin-bottom: .875rem; }
+    .modal-submit {
+      background: var(--wa-groen); color: #fff;
+      border: none; border-radius: 6px;
+      padding: .875rem; font-size: .9375rem; font-weight: 600;
+      cursor: pointer; width: 100%; font-family: inherit;
+      transition: background .2s; margin-top: .25rem;
+    }
+    .modal-submit:hover { background: #1fb857; }
+    .modal-note { font-size: .75rem; color: var(--grijs); text-align: center; margin-top: .75rem; }
+
+
+    .form-success { display: none; text-align: center; padding: 2rem; }
     .form-success .check { font-size: 3rem; margin-bottom: 1rem; }
     .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--olijf); margin-bottom: .5rem; }
     .form-success p { color: var(--grijs); font-size: .9375rem; }
@@ -393,6 +545,8 @@
       .nav-links { display: none; }
       .regio-divider { display: none; }
       .regio-banner { gap: 2rem; }
+      .wa-banner { flex-direction: column; text-align: center; }
+      .prod-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
     }
 
     /* ── ANIMATIES ── */
@@ -412,9 +566,11 @@
   <a href="#" class="nav-logo">Ibérica Fresh <span>Trading</span></a>
   <ul class="nav-links">
     <li><a href="#waarom">Waarom wij</a></li>
+    <li><a href="#assortiment">Assortiment</a></li>
     <li><a href="#werkgebied">Werkgebied</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#contact" class="nav-cta">Offerte aanvragen</a></li>
+
   </ul>
 </nav>
 
@@ -432,6 +588,13 @@
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Neem contact op</a>
+      <!-- [2] WhatsApp CTA in hero -->
+      <a href="#" class="btn-wa" onclick="openWaModal(event)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Wekelijkse prijslijst ontvangen
+      </a>
       <a href="#waarom" class="btn-ghost">
         <span>Meer over ons</span>
         <span>↓</span>
@@ -456,6 +619,23 @@
   </div>
 </section>
 
+<!-- [2] WHATSAPP PRIJSLIJST BANNER -->
+<div class="wa-banner">
+  <div class="wa-banner-text">
+    <strong>📲 Ontvang elke week onze verseprijslijst via WhatsApp</strong>
+    <span>Direct toegang tot actuele inkoopprijzen, beschikbaarheid en aanbiedingen — elke maandag in uw WhatsApp.</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+    <span class="wa-badge">✅ Gratis · Uitschrijven wanneer u wilt</span>
+    <a href="#" class="wa-banner-cta" onclick="openWaModal(event)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Aanmelden voor prijslijst
+    </a>
+  </div>
+</div>
+
 <!-- REGIO BANNER -->
 <div class="regio-banner">
   <div class="regio-item">
@@ -478,8 +658,10 @@
   <div class="regio-divider"></div>
   <div class="regio-item">
     <div class="flag">🚛</div>
-    <strong>Rotterdam</strong>
-    <span>Uw leveradres</span>
+    <strong>Regio Barendrecht</strong>
+    <span>Distributiecentrum</span>
+    <!-- [4] Locatie-badge -->
+    <div class="locatie-badge">📍 Agrologistiek cluster</div>
   </div>
 </div>
 
@@ -529,6 +711,130 @@
           <p>Vaste wekelijkse prijslijst, geen verborgen kosten. BTW-verlegging op Spaanse inkopen, correct afgehandeld.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- [3] ASSORTIMENT -->
+<section class="assortiment" id="assortiment">
+  <div class="assortiment-inner">
+    <div class="assortiment-header fade-in">
+      <p class="section-eyebrow">Assortiment</p>
+      <h2 class="section-title">Onze hardlopers</h2>
+      <p class="section-body">Verse producten geselecteerd door onze eigen keurmeester in Spanje — op maatsortering, kleur en houdbaarheid.</p>
+    </div>
+
+    <div class="prod-tabs fade-in">
+      <button class="prod-tab active" onclick="switchTab(event,'agf')">🥦 Verse AGF</button>
+      <button class="prod-tab" onclick="switchTab(event,'vis')">🐟 Zeevruchten & Vis</button>
+    </div>
+
+    <!-- AGF -->
+    <div class="prod-section active" id="tab-agf" style="grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.25rem;">
+      <div class="prod-card fade-in">
+        <div class="prod-img agf">🍅<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-info">
+          <h3>Vleestomaat</h3>
+          <div class="prod-regio">🇪🇸 Murcia · Maat G/GG</div>
+          <div class="prod-verpakking">6 kg kist · Gekoeld 4–8°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img agf">🌶️<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-info">
+          <h3>Paprika mix tricolor</h3>
+          <div class="prod-regio">🇪🇸 Almería · Klasse I</div>
+          <div class="prod-verpakking">5 kg kist · Gekoeld 4–8°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img citrus">🍊<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-info">
+          <h3>Sinaasappel Navel</h3>
+          <div class="prod-regio">🇪🇸 Valencia · Maat 1/2</div>
+          <div class="prod-verpakking">15 kg kist · Gekoeld 4–8°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img agf">🍒<span class="prod-tag">Tapas</span></div>
+        <div class="prod-info">
+          <h3>Padrón pepers</h3>
+          <div class="prod-regio">🇪🇸 Galicië · Vers geplukt</div>
+          <div class="prod-verpakking">1 kg zak · Gekoeld 4–8°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img agf">🍆</div>
+        <div class="prod-info">
+          <h3>Aubergine</h3>
+          <div class="prod-regio">🇪🇸 Almería · Klasse I</div>
+          <div class="prod-verpakking">6 kg kist · Gekoeld 4–8°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img agf">🥒</div>
+        <div class="prod-info">
+          <h3>Courgette</h3>
+          <div class="prod-regio">🇪🇸 Murcia · Strak</div>
+          <div class="prod-verpakking">8 kg kist · Gekoeld 4–8°C</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIS -->
+    <div class="prod-section" id="tab-vis" style="grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.25rem;">
+      <div class="prod-card fade-in">
+        <div class="prod-img vis">🐙<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-info">
+          <h3>Octopus heel</h3>
+          <div class="prod-regio">🇪🇸 Vigo, Galicië · T3/T4</div>
+          <div class="prod-verpakking">10 kg karton · IQF −18°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img vis">🦐<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-info">
+          <h3>Gambas L1 ongepeld</h3>
+          <div class="prod-regio">🇪🇸 Vigo, Galicië · 16–20 st/kg</div>
+          <div class="prod-verpakking">2 kg doos · IQF −18°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img vis">🦑<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-info">
+          <h3>Inktvisringen</h3>
+          <div class="prod-regio">🇪🇸 Atlantisch · IQF</div>
+          <div class="prod-verpakking">2,5 kg zak · IQF −18°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img vis">🐙</div>
+        <div class="prod-info">
+          <h3>Octopus tentakels voorgekookt</h3>
+          <div class="prod-regio">🇪🇸 Vigo, Galicië · Vacuüm</div>
+          <div class="prod-verpakking">5 kg vacuüm · IQF −18°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img vis">🐟</div>
+        <div class="prod-info">
+          <h3>Heek filet</h3>
+          <div class="prod-regio">🇪🇸 Atlantisch · MSC</div>
+          <div class="prod-verpakking">10 kg karton · IQF −18°C</div>
+        </div>
+      </div>
+      <div class="prod-card fade-in">
+        <div class="prod-img vis">🐠</div>
+        <div class="prod-info">
+          <h3>Zeebrasem heel</h3>
+          <div class="prod-regio">🇪🇸 Atlantisch · 400–600g</div>
+          <div class="prod-verpakking">10 kg kist · Gekoeld 0–2°C</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem;" class="fade-in">
+      <a href="#contact" class="btn-primary" style="display:inline-block;">Volledig assortiment opvragen →</a>
     </div>
   </div>
 </section>
@@ -583,8 +889,9 @@
       <div class="contact-detail">
         <div class="contact-detail-icon">📍</div>
         <div class="contact-detail-text">
-          <strong>Locatie</strong>
-          <span>Rotterdam, Nederland</span>
+          <!-- [4] Specifieke locatie -->
+          <strong>Distributiecentrum</strong>
+          <span>Regio Barendrecht / Bleiswijk, Nederland</span>
         </div>
       </div>
       <div class="contact-detail">
@@ -662,29 +969,91 @@
 <!-- FOOTER -->
 <footer>
   <a href="#top" class="footer-logo">Ibérica Fresh <span>Trading</span> BV</a>
-  <p>KvK: [nummer na oprichting] · Rotterdam</p>
+  <p>KvK: [nummer na oprichting] · Regio Barendrecht</p>
   <p>© 2026 Ibérica Fresh Trading BV · <a href="mailto:info@ibericafresh.nl">info@ibericafresh.nl</a></p>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/31600000000?text=Hallo%2C%20ik%20heb%20interesse%20in%20uw%20producten." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a href="#" onclick="openWaModal(event)" class="whatsapp-float" aria-label="WhatsApp prijslijst">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
 
+<!-- [2] WHATSAPP AANMELD MODAL -->
+<div class="modal-overlay" id="wa-modal">
+  <div class="modal wa-modal">
+    <button class="modal-close" onclick="closeModal('wa-modal')">×</button>
+    <h3>📲 Wekelijkse prijslijst</h3>
+    <p>Ontvang elke maandag actuele inkoopprijzen, beschikbaarheid en aanbiedingen direct op WhatsApp.</p>
+    <div class="form-group">
+      <label>Uw naam</label>
+      <input type="text" id="wa-naam" placeholder="Jan Bakker" required/>
+    </div>
+    <div class="form-group">
+      <label>Bedrijfsnaam</label>
+      <input type="text" id="wa-bedrijf" placeholder="Uw bedrijf" required/>
+    </div>
+    <div class="form-group">
+      <label>WhatsApp-nummer</label>
+      <input type="tel" id="wa-tel" placeholder="+31 6 00 00 00 00" required/>
+    </div>
+    <button class="modal-submit" onclick="aanmeldenWa()">Aanmelden voor prijslijst</button>
+    <p class="modal-note">Gratis · U kunt zich op elk moment uitschrijven.</p>
+  </div>
+</div>
+
 <script>
-  // Scroll animaties
+  // ── Scroll animaties ──
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Formulier
+  // ── Formulier ──
   function handleSubmit(e) {
     e.preventDefault();
     document.getElementById('contact-form').style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
+  }
+
+  // ── Modals ──
+  function openWaModal(e) { e.preventDefault(); document.getElementById('wa-modal').classList.add('open'); }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+  // Klik buiten modal sluit hem
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+      if(e.target === this) this.classList.remove('open');
+    });
+  });
+
+  // Escape-toets sluit modal
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+  });
+  // ── WA aanmelden ──
+  function aanmeldenWa() {
+    const naam = document.getElementById('wa-naam').value.trim();
+    const tel  = document.getElementById('wa-tel').value.trim();
+    if(!naam || !tel) { alert('Vul uw naam en WhatsApp-nummer in.'); return; }
+    // Stuurt de inkoper naar WhatsApp met voorgevuld bericht
+    const msg = encodeURIComponent(`Hallo, ik wil graag de wekelijkse prijslijst ontvangen.\n\nNaam: ${naam}\nBedrijf: ${document.getElementById('wa-bedrijf').value.trim()}\nTel: ${tel}`);
+    window.open(`https://wa.me/31600000000?text=${msg}`, '_blank');
+    closeModal('wa-modal');
+  }
+
+  // ── Product tab switcher ──
+  function switchTab(e, tab) {
+    document.querySelectorAll('.prod-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.prod-section').forEach(s => s.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+    // Re-trigger fade-in voor nieuwe kaarten
+    document.querySelectorAll('#tab-' + tab + ' .fade-in').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => el.classList.add('visible'), 50);
+    });
   }
 </script>
 </body>
