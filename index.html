@@ -288,15 +288,16 @@
 
     .prod-img {
       width: 100%; aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 5rem;
       position: relative; overflow: hidden;
+      background: var(--zand);
     }
 
-    /* Kleur-achtergronden per categorie */
-    .prod-img.agf  { background: linear-gradient(135deg, #EBF5E9 0%, #D4E8D1 100%); }
-    .prod-img.vis  { background: linear-gradient(135deg, #E6EFF6 0%, #C8DCF0 100%); }
-    .prod-img.citrus { background: linear-gradient(135deg, #FEF9E7 0%, #F9ECC0 100%); }
+    .prod-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .4s ease;
+    }
+    .prod-card:hover .prod-img img { transform: scale(1.04); }
 
     .prod-tag {
       position: absolute; top: .75rem; left: .75rem;
@@ -584,7 +585,7 @@
       koelcel
     </h1>
     <p class="hero-sub">
-      Ibérica Fresh haalt dagverse AGF en zeevruchten rechtstreeks bij telers en vissers in Spanje op zonder tussenschakels, met volle traceerbaarheid.
+      Ibérica Fresh haalt dagverse AGF en zeevruchten rechtstreeks bij telers en vissers in Spanje op — zonder tussenschakels, met volle traceerbaarheid.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Neem contact op</a>
@@ -732,51 +733,67 @@
     <!-- AGF -->
     <div class="prod-section active" id="tab-agf" style="grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.25rem;">
       <div class="prod-card fade-in">
-        <div class="prod-img agf">🍅<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1582284540020-8acbe03f4924?w=600&q=80&fit=crop" alt="Vleestomaat" loading="lazy"/>
+          <span class="prod-tag high-runner">⭐ Hardloper</span>
+        </div>
         <div class="prod-info">
           <h3>Vleestomaat</h3>
           <div class="prod-regio">🇪🇸 Murcia · Maat G/GG</div>
-          <div class="prod-verpakking">6 kg kist · Gekoeld 4–8°C</div>
+          <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img agf">🌶️<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&q=80&fit=crop" alt="Paprika mix tricolor" loading="lazy"/>
+          <span class="prod-tag high-runner">⭐ Hardloper</span>
+        </div>
         <div class="prod-info">
           <h3>Paprika mix tricolor</h3>
           <div class="prod-regio">🇪🇸 Almería · Klasse I</div>
-          <div class="prod-verpakking">5 kg kist · Gekoeld 4–8°C</div>
+          <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img citrus">🍊<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1547514701-42782101795e?w=600&q=80&fit=crop" alt="Sinaasappel Navel" loading="lazy"/>
+          <span class="prod-tag high-runner">⭐ Hardloper</span>
+        </div>
         <div class="prod-info">
           <h3>Sinaasappel Navel</h3>
           <div class="prod-regio">🇪🇸 Valencia · Maat 1/2</div>
-          <div class="prod-verpakking">15 kg kist · Gekoeld 4–8°C</div>
+          <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img agf">🍒<span class="prod-tag">Tapas</span></div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1526346698789-22fd84314424?w=600&q=80&fit=crop" alt="Padrón pepers" loading="lazy"/>
+          <span class="prod-tag">Tapas</span>
+        </div>
         <div class="prod-info">
           <h3>Padrón pepers</h3>
           <div class="prod-regio">🇪🇸 Galicië · Vers geplukt</div>
-          <div class="prod-verpakking">1 kg zak · Gekoeld 4–8°C</div>
+          <div class="prod-verpakking">Zakken · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img agf">🍆</div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1605196560547-b2f7281b7355?w=600&q=80&fit=crop" alt="Aubergine" loading="lazy"/>
+        </div>
         <div class="prod-info">
           <h3>Aubergine</h3>
           <div class="prod-regio">🇪🇸 Almería · Klasse I</div>
-          <div class="prod-verpakking">6 kg kist · Gekoeld 4–8°C</div>
+          <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img agf">🥒</div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1566842600175-97dca489844f?w=600&q=80&fit=crop" alt="Courgette" loading="lazy"/>
+        </div>
         <div class="prod-info">
           <h3>Courgette</h3>
-          <div class="prod-regio">🇪🇸 Murcia · Strak</div>
-          <div class="prod-verpakking">8 kg kist · Gekoeld 4–8°C</div>
+          <div class="prod-regio">🇪🇸 Murcia · Klasse I</div>
+          <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
     </div>
@@ -784,51 +801,66 @@
     <!-- VIS -->
     <div class="prod-section" id="tab-vis" style="grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.25rem;">
       <div class="prod-card fade-in">
-        <div class="prod-img vis">🐙<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?w=600&q=80&fit=crop" alt="Octopus heel" loading="lazy"/>
+          <span class="prod-tag high-runner">⭐ Hardloper</span>
+        </div>
         <div class="prod-info">
           <h3>Octopus heel</h3>
-          <div class="prod-regio">🇪🇸 Vigo, Galicië · T3/T4</div>
-          <div class="prod-verpakking">10 kg karton · IQF −18°C</div>
+          <div class="prod-regio">🇪🇸 Vigo, Galicië · Maat T3/T4</div>
+          <div class="prod-verpakking">Kartons · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img vis">🦐<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=600&q=80&fit=crop" alt="Gambas L1" loading="lazy"/>
+          <span class="prod-tag high-runner">⭐ Hardloper</span>
+        </div>
         <div class="prod-info">
           <h3>Gambas L1 ongepeld</h3>
           <div class="prod-regio">🇪🇸 Vigo, Galicië · 16–20 st/kg</div>
-          <div class="prod-verpakking">2 kg doos · IQF −18°C</div>
+          <div class="prod-verpakking">Dozen · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img vis">🦑<span class="prod-tag high-runner">⭐ Hardloper</span></div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80&fit=crop" alt="Inktvisringen" loading="lazy"/>
+          <span class="prod-tag high-runner">⭐ Hardloper</span>
+        </div>
         <div class="prod-info">
           <h3>Inktvisringen</h3>
           <div class="prod-regio">🇪🇸 Atlantisch · IQF</div>
-          <div class="prod-verpakking">2,5 kg zak · IQF −18°C</div>
+          <div class="prod-verpakking">Zakken · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img vis">🐙</div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=600&q=80&fit=crop" alt="Octopus tentakels" loading="lazy"/>
+        </div>
         <div class="prod-info">
           <h3>Octopus tentakels voorgekookt</h3>
           <div class="prod-regio">🇪🇸 Vigo, Galicië · Vacuüm</div>
-          <div class="prod-verpakking">5 kg vacuüm · IQF −18°C</div>
+          <div class="prod-verpakking">Vacuümzakken · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img vis">🐟</div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=600&q=80&fit=crop" alt="Heek filet" loading="lazy"/>
+        </div>
         <div class="prod-info">
           <h3>Heek filet</h3>
           <div class="prod-regio">🇪🇸 Atlantisch · MSC</div>
-          <div class="prod-verpakking">10 kg karton · IQF −18°C</div>
+          <div class="prod-verpakking">Kartons · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
       <div class="prod-card fade-in">
-        <div class="prod-img vis">🐠</div>
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80&fit=crop" alt="Zeebrasem" loading="lazy"/>
+        </div>
         <div class="prod-info">
           <h3>Zeebrasem heel</h3>
-          <div class="prod-regio">🇪🇸 Atlantisch · 400–600g</div>
-          <div class="prod-verpakking">10 kg kist · Gekoeld 0–2°C</div>
+          <div class="prod-regio">🇪🇸 Atlantisch · Klasse A</div>
+          <div class="prod-verpakking">Kisten · Gekoeld 0–2°C · Op aanvraag</div>
         </div>
       </div>
     </div>
