@@ -654,6 +654,8 @@
     }
   </style>
   <link rel="canonical" href="https://www.ibericafresh.nl/"/>
+  <!-- Plausible Analytics (privacy-vriendelijk, geen cookies) -->
+  <script defer data-domain="ibericafresh.nl" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
@@ -1151,6 +1153,8 @@
             <label>Bericht</label>
             <textarea placeholder="Beschrijf kort uw behoefte — welke producten, volumes, leverfrequentie..."></textarea>
           </div>
+          <!-- Honeypot: verborgen veld, echte gebruikers laten dit leeg -->
+          <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off"/>
           <button type="submit" class="form-submit">Verstuur bericht</button>
           <p class="form-note">We reageren binnen 1 werkdag via e-mail.</p>
         </form>
@@ -1164,11 +1168,24 @@
   </div>
 </section>
 
+<!-- PRIVACYVERKLARING -->
+<section id="privacy" style="background:var(--kool);padding:4rem 5vw;">
+  <div style="max-width:760px;margin:0 auto;color:rgba(255,255,255,.7);">
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:1.5rem;">Privacyverklaring</h2>
+    <p style="margin-bottom:1rem;font-size:.9rem;line-height:1.75;">Ibérica Fresh Trading BV verwerkt persoonsgegevens uitsluitend voor het beantwoorden van uw aanvraag en het versturen van de wekelijkse prijslijst via WhatsApp. Wij delen uw gegevens nooit met derden.</p>
+    <p style="margin-bottom:1rem;font-size:.9rem;line-height:1.75;"><strong style="color:#fff;">Welke gegevens:</strong> naam, bedrijfsnaam, e-mailadres en/of telefoonnummer, ingevuld via het contactformulier of de WhatsApp-aanmelding.</p>
+    <p style="margin-bottom:1rem;font-size:.9rem;line-height:1.75;"><strong style="color:#fff;">Grondslag:</strong> uw toestemming (artikel 6 lid 1 sub a AVG).</p>
+    <p style="margin-bottom:1rem;font-size:.9rem;line-height:1.75;"><strong style="color:#fff;">Bewaartermijn:</strong> uw gegevens worden bewaard zolang u klant bent of zolang u op de prijslijst staat. U kunt zich op elk moment uitschrijven via <a href="mailto:info@ibericafresh.nl" style="color:var(--zon);">info@ibericafresh.nl</a>.</p>
+    <p style="font-size:.9rem;line-height:1.75;"><strong style="color:#fff;">Vragen of inzageverzoek:</strong> neem contact op via <a href="mailto:info@ibericafresh.nl" style="color:var(--zon);">info@ibericafresh.nl</a>. U heeft het recht op inzage, correctie en verwijdering van uw gegevens.</p>
+  </div>
+</section>
+
+
 <!-- FOOTER -->
 <footer>
   <a href="#top" class="footer-logo">Ibérica Fresh <span>Trading</span> BV</a>
-  <p>KvK: [nummer na oprichting] · Regio Barendrecht</p>
-  <p>© 2026 Ibérica Fresh Trading BV · <a href="mailto:info@ibericafresh.nl">info@ibericafresh.nl</a></p>
+  <!-- KVK --><p>KvK: <span id="kvk-nummer">[na oprichting invullen]</span> · BTW: NL[nummer] · Regio Barendrecht</p>
+  <p>© 2026 Ibérica Fresh Trading BV · <a href="mailto:info@ibericafresh.nl">info@ibericafresh.nl</a> · <a href="#privacy">Privacyverklaring</a></p>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
@@ -1227,6 +1244,8 @@
   // ── Formulier ──
   function handleSubmit(e) {
     e.preventDefault();
+    // Honeypot check: als dit veld ingevuld is, is het een bot
+    if(e.target.querySelector('[name="website"]').value) return;
     document.getElementById('contact-form').style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
   }
@@ -1248,6 +1267,8 @@
   });
   // ── WA aanmelden ──
   function aanmeldenWa() {
+    // Track WhatsApp klik in Plausible
+    if(window.plausible) plausible('WhatsApp aanmelding');
     const naam = document.getElementById('wa-naam').value.trim();
     const tel  = document.getElementById('wa-tel').value.trim();
     if(!naam || !tel) { alert('Vul uw naam en WhatsApp-nummer in.'); return; }
@@ -1270,5 +1291,15 @@
     });
   }
 </script>
+
+<!-- COOKIE NOTIFICATIE -->
+<div id="cookie-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--kool);color:rgba(255,255,255,.8);padding:1rem 5vw;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.875rem;">
+  <p>Deze website gebruikt <strong style="color:#fff;">geen cookies</strong>. We meten bezoekersaantallen via Plausible Analytics, een privacyvriendelijke tool zonder persoonsgegevens.</p>
+  <button onclick="document.getElementById('cookie-bar').style.display='none';localStorage.setItem('cookie-ok','1')" style="background:var(--olijf);color:#fff;border:none;border-radius:6px;padding:.5rem 1.25rem;font-size:.875rem;font-weight:600;cursor:pointer;white-space:nowrap;">Begrepen</button>
+</div>
+<script>
+  if(!localStorage.getItem('cookie-ok')) document.getElementById('cookie-bar').style.display='flex';
+</script>
+
 </body>
 </html>
