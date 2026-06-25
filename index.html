@@ -1248,8 +1248,8 @@
   // ── Formulier ──
   async function handleSubmit(e) {
     e.preventDefault();
-    // Honeypot check
-    if(e.target.querySelector('[name="website"]').value) return;
+    // Botcheck (Web3Forms)
+    if(e.target.querySelector('[name="botcheck"]') && e.target.querySelector('[name="botcheck"]').checked) return;
 
     const btn = e.target.querySelector('.form-submit');
     btn.textContent = 'Verzenden...';
