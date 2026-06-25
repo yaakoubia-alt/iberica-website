@@ -539,7 +539,28 @@
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 5rem 6vw 3rem; }
       .hero-right { height: 280px; }
-      .badge-1, .badge-2, .badge-3 { display: none; }
+      .badge-1, .badge-2, .badge-3 {
+        position: static;
+        display: inline-flex;
+        align-items: center;
+        gap: .75rem;
+        padding: .6rem 1rem;
+        border-radius: 8px;
+      }
+      .hero-illustration {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: .5rem;
+        padding: 1.25rem;
+        align-items: center;
+        justify-content: center;
+        background: var(--olijf);
+        height: auto !important;
+      }
+      .hero-illustration::before { display: none; }
+      .badge-num { font-size: 1.25rem; }
+      .badge-label { font-size: .7rem; margin-top: 0; }
       .waarom-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .werkgebied-header { grid-template-columns: 1fr; gap: 2rem; }
       .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
