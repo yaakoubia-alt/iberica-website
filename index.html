@@ -1128,24 +1128,24 @@
           <div class="form-row">
             <div class="form-group">
               <label>Voornaam</label>
-              <input type="text" placeholder="Jan" required/>
+              <input type="text" name="voornaam" placeholder="Jan" required/>
             </div>
             <div class="form-group">
               <label>Achternaam</label>
-              <input type="text" placeholder="Bakker" required/>
+              <input type="text" name="achternaam" placeholder="Bakker" required/>
             </div>
           </div>
           <div class="form-group">
             <label>Bedrijfsnaam</label>
-            <input type="text" placeholder="Uw bedrijf" required/>
+            <input type="text" name="bedrijf" placeholder="Uw bedrijf" required/>
           </div>
           <div class="form-group">
             <label>E-mailadres</label>
-            <input type="email" placeholder="u@bedrijf.nl" required/>
+            <input type="email" name="email" placeholder="u@bedrijf.nl" required/>
           </div>
           <div class="form-group">
             <label>Wat zoekt u?</label>
-            <select required>
+            <select name="categorie" required>
               <option value="">— Kies een categorie —</option>
               <option>Verse AGF (groenten & fruit)</option>
               <option>Zeevruchten & vis</option>
@@ -1155,10 +1155,10 @@
           </div>
           <div class="form-group">
             <label>Bericht</label>
-            <textarea placeholder="Beschrijf kort uw behoefte — welke producten, volumes, leverfrequentie..."></textarea>
+            <textarea name="bericht" placeholder="Beschrijf kort uw behoefte — welke producten, volumes, leverfrequentie..."></textarea>
           </div>
           <!-- Honeypot: verborgen veld, echte gebruikers laten dit leeg -->
-          <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off"/>
+          
           <button type="submit" class="form-submit">Verstuur bericht</button>
           <p class="form-note">We reageren binnen 1 werkdag via e-mail.</p>
         </form>
