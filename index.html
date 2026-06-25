@@ -295,7 +295,7 @@
 
     .prod-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(5, 1fr);
       gap: 1.25rem;
     }
 
@@ -363,7 +363,7 @@
     .prod-section { display: none; }
     .prod-section.active {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(5, 1fr);
       gap: 1.25rem;
     }
 
@@ -563,6 +563,10 @@
     .form-success p { color: var(--grijs); font-size: .9375rem; }
 
     /* ── RESPONSIEF ── */
+    @media (max-width: 1024px) {
+      .prod-section.active { grid-template-columns: repeat(4, 1fr) !important; }
+      .prod-grid { grid-template-columns: repeat(4, 1fr) !important; }
+    }
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 5rem 6vw 3rem; }
@@ -586,6 +590,7 @@
       .regio-banner { gap: 2rem; }
       .wa-banner { flex-direction: column; text-align: center; }
       .prod-section.active { grid-template-columns: repeat(2, 1fr) !important; }
+      .prod-grid { grid-template-columns: repeat(2, 1fr) !important; }
     }
 
     /* ── ANIMATIES ── */
