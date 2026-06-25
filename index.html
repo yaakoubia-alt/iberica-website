@@ -678,70 +678,40 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 140" style="height:40px;width:auto;display:block;">
-  <defs>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap');
-    </style>
-  </defs>
+  <a href="#" class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 56" style="height:48px;width:auto;display:block;">
 
-  <!-- ── BEELDMERK: Horizon-cirkel ── -->
-  <!-- Buitenste cirkel (terra) -->
-  <circle cx="70" cy="70" r="52" fill="none" stroke="#c4622d" stroke-width="2.5"/>
+  <!-- Beeldmerk: cirkel met golf en blad -->
+  <circle cx="28" cy="28" r="24" fill="none" stroke="#c4622d" stroke-width="2"/>
 
-  <!-- Golflijn die cirkel horizontaal doorsnijdt -->
-  <clipPath id="cirkel-clip">
-    <circle cx="70" cy="70" r="50"/>
+  <!-- Golflijnen in cirkel -->
+  <clipPath id="cc">
+    <circle cx="28" cy="28" r="23"/>
   </clipPath>
+  <path d="M4 30 Q11 24 18 30 Q25 36 32 30 Q39 24 46 30 Q52 36 58 30"
+        fill="none" stroke="#3d5a3e" stroke-width="2" stroke-linecap="round" clip-path="url(#cc)"/>
+  <path d="M4 37 Q11 31 18 37 Q25 43 32 37 Q39 31 46 37 Q52 43 58 37"
+        fill="none" stroke="#3d5a3e" stroke-width="1.2" stroke-linecap="round" opacity="0.4" clip-path="url(#cc)"/>
 
-  <!-- Golf (zee) -->
-  <path d="M18 74 Q31 64 44 74 Q57 84 70 74 Q83 64 96 74 Q109 84 122 74"
-        fill="none" stroke="#3d5a3e" stroke-width="2.5" stroke-linecap="round"
-        clip-path="url(#cirkel-clip)"/>
+  <!-- Olijfblad -->
+  <path d="M28 6 Q34 14 28 22 Q22 14 28 6Z" fill="#3d5a3e"/>
+  <line x1="28" y1="22" x2="28" y2="26" stroke="#3d5a3e" stroke-width="1.2" stroke-linecap="round"/>
 
-  <!-- Tweede golf, iets lager -->
-  <path d="M18 83 Q31 73 44 83 Q57 93 70 83 Q83 73 96 83 Q109 93 122 83"
-        fill="none" stroke="#3d5a3e" stroke-width="1.5" stroke-linecap="round" opacity="0.45"
-        clip-path="url(#cirkel-clip)"/>
+  <!-- Terra stip (zon) -->
+  <circle cx="28" cy="4" r="2.5" fill="#c4622d"/>
 
-  <!-- Olijfblad boven (AGF) -->
-  <ellipse cx="70" cy="38" rx="7" ry="14" fill="#3d5a3e" rx="7" ry="13"
-           transform="rotate(-15 70 38)" opacity="0.9"/>
-  <ellipse cx="70" cy="38" rx="7" ry="14" fill="#3d5a3e"
-           transform="rotate(15 70 38)" opacity="0.9"/>
-  <!-- Steeltje blad -->
-  <line x1="70" y1="52" x2="70" y2="42" stroke="#3d5a3e" stroke-width="1.5" stroke-linecap="round"/>
-
-  <!-- Kleine zon-punt boven cirkel -->
-  <circle cx="70" cy="18" r="4" fill="#c4622d"/>
-
-  <!-- ── TYPOGRAFIE ── -->
   <!-- IBÉRICA -->
-  <text x="148" y="72"
+  <text x="64" y="30"
         font-family="Inter, system-ui, sans-serif"
-        font-size="38"
-        font-weight="700"
-        letter-spacing="-0.5"
+        font-size="24" font-weight="700"
+        letter-spacing="-0.3"
         fill="#1a1a14">IBÉRICA</text>
 
   <!-- FRESH TRADING -->
-  <text x="150" y="100"
+  <text x="66" y="46"
         font-family="Inter, system-ui, sans-serif"
-        font-size="16"
-        font-weight="500"
-        letter-spacing="4"
+        font-size="11" font-weight="500"
+        letter-spacing="3.5"
         fill="#3d5a3e">FRESH TRADING</text>
-
-  <!-- Dunne scheidingslijn tussen woorden -->
-  <line x1="148" y1="108" x2="370" y2="108" stroke="#d8d3c8" stroke-width="1"/>
-
-  <!-- Tagline -->
-  <text x="148" y="124"
-        font-family="Inter, system-ui, sans-serif"
-        font-size="10"
-        font-weight="400"
-        letter-spacing="2"
-        fill="#6b6b5e">IMPORT · SPANJE → NEDERLAND</text>
 
 </svg></a>
   <ul class="nav-links">
@@ -1274,70 +1244,40 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="#top" class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 140" style="height:28px;width:auto;display:block;">
-  <defs>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap');
-    </style>
-  </defs>
+  <a href="#top" class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 56" style="height:36px;width:auto;display:block;">
 
-  <!-- ── BEELDMERK: Horizon-cirkel ── -->
-  <!-- Buitenste cirkel (terra) -->
-  <circle cx="70" cy="70" r="52" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
+  <!-- Beeldmerk: cirkel met golf en blad -->
+  <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
 
-  <!-- Golflijn die cirkel horizontaal doorsnijdt -->
-  <clipPath id="cirkel-clip">
-    <circle cx="70" cy="70" r="50"/>
+  <!-- Golflijnen in cirkel -->
+  <clipPath id="cc">
+    <circle cx="28" cy="28" r="23"/>
   </clipPath>
+  <path d="M4 30 Q11 24 18 30 Q25 36 32 30 Q39 24 46 30 Q52 36 58 30"
+        fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" clip-path="url(#cc)"/>
+  <path d="M4 37 Q11 31 18 37 Q25 43 32 37 Q39 31 46 37 Q52 43 58 37"
+        fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" opacity="0.4" clip-path="url(#cc)"/>
 
-  <!-- Golf (zee) -->
-  <path d="M18 74 Q31 64 44 74 Q57 84 70 74 Q83 64 96 74 Q109 84 122 74"
-        fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"
-        clip-path="url(#cirkel-clip)"/>
+  <!-- Olijfblad -->
+  <path d="M28 6 Q34 14 28 22 Q22 14 28 6Z" fill="rgba(255,255,255,0.85)"/>
+  <line x1="28" y1="22" x2="28" y2="26" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round"/>
 
-  <!-- Tweede golf, iets lager -->
-  <path d="M18 83 Q31 73 44 83 Q57 93 70 83 Q83 73 96 83 Q109 93 122 83"
-        fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" opacity="0.45"
-        clip-path="url(#cirkel-clip)"/>
+  <!-- Terra stip (zon) -->
+  <circle cx="28" cy="4" r="2.5" fill="rgba(255,255,255,0.8)"/>
 
-  <!-- Olijfblad boven (AGF) -->
-  <ellipse cx="70" cy="38" rx="7" ry="14" fill="rgba(255,255,255,0.85)" rx="7" ry="13"
-           transform="rotate(-15 70 38)" opacity="0.9"/>
-  <ellipse cx="70" cy="38" rx="7" ry="14" fill="rgba(255,255,255,0.85)"
-           transform="rotate(15 70 38)" opacity="0.9"/>
-  <!-- Steeltje blad -->
-  <line x1="70" y1="52" x2="70" y2="42" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round"/>
-
-  <!-- Kleine zon-punt boven cirkel -->
-  <circle cx="70" cy="18" r="4" fill="rgba(255,255,255,0.85)"/>
-
-  <!-- ── TYPOGRAFIE ── -->
   <!-- IBÉRICA -->
-  <text x="148" y="72"
+  <text x="64" y="30"
         font-family="Inter, system-ui, sans-serif"
-        font-size="38"
-        font-weight="700"
-        letter-spacing="-0.5"
+        font-size="24" font-weight="700"
+        letter-spacing="-0.3"
         fill="#ffffff">IBÉRICA</text>
 
   <!-- FRESH TRADING -->
-  <text x="150" y="100"
+  <text x="66" y="46"
         font-family="Inter, system-ui, sans-serif"
-        font-size="16"
-        font-weight="500"
-        letter-spacing="4"
+        font-size="11" font-weight="500"
+        letter-spacing="3.5"
         fill="rgba(255,255,255,0.85)">FRESH TRADING</text>
-
-  <!-- Dunne scheidingslijn tussen woorden -->
-  <line x1="148" y1="108" x2="370" y2="108" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-
-  <!-- Tagline -->
-  <text x="148" y="124"
-        font-family="Inter, system-ui, sans-serif"
-        font-size="10"
-        font-weight="400"
-        letter-spacing="2"
-        fill="rgba(255,255,255,0.5)">IMPORT · SPANJE → NEDERLAND</text>
 
 </svg></a>
   <!-- KVK --><p>KvK: <span id="kvk-nummer">[na oprichting invullen]</span> · BTW: NL[nummer] · Regio Barendrecht</p>
