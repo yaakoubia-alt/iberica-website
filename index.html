@@ -4,20 +4,20 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-  <title>Ibérica Fresh Trading BV | Verse producten uit Spanje</title>
-  <meta name="description" content="Ibérica Fresh Trading BV — AGF importeur en zeevruchten groothandel uit Spanje. Directe levering van verse groenten, fruit en vis aan groothandels, horeca en speciaalzaken in Nederland."/>
-  <meta name="keywords" content="AGF import Spanje, verse groenten groothandel, zeevruchten importeur Nederland, Spaanse groenten, vis groothandel, AGF groothandel Rotterdam, verse paprika import, octopus gambas importeur"/>
+  <title>Ibérica Fresh Trading BV | AGF &amp; Zeevruchten Import voor Retail en Horeca</title>
+  <meta name="description" content="Ibérica Fresh Trading BV — BRCGS/IFS-geborgde import van vers fruit, groenten en zeevruchten uit Spanje. Vaste leverancier voor supermarkten, horeca en groothandels, met eigen Área de Productores portaal voor onze Spaanse telers en vispartners."/>
+  <meta name="keywords" content="AGF import Spanje, zeevruchten import Spanje, BRCGS 3PL koelhuis, MRL residubewaking, weight-correction levering, teler portaal Spanje, Área de Productores, AGF groothandel Rotterdam Barendrecht"/>
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://www.ibericafresh.nl/"/>
-  <meta property="og:title" content="Ibérica Fresh Trading BV | Verse producten uit Spanje"/>
-  <meta property="og:description" content="Directe import van verse AGF en zeevruchten uit Spanje. Geen tussenhandel, eerlijke prijzen en volledige traceerbaarheid van perceel tot pallet."/>
+  <meta property="og:title" content="Ibérica Fresh Trading BV | AGF &amp; Zeevruchten Import voor Retail en Horeca"/>
+  <meta property="og:description" content="BRCGS/IFS-geborgde import van verse AGF en zeevruchten uit Spanje, met eigen Área de Productores portaal voor onze Spaanse telers en vispartners."/>
   <meta property="og:image" content="https://www.ibericafresh.nl/og-image.jpg"/>
   <meta property="og:locale" content="nl_NL"/>
   <!-- Twitter/X Card -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Ibérica Fresh Trading BV | Verse producten uit Spanje"/>
-  <meta name="twitter:description" content="Directe import van verse AGF en zeevruchten uit Spanje. Geen tussenhandel, eerlijke prijzen en volledige traceerbaarheid."/>
+  <meta name="twitter:title" content="Ibérica Fresh Trading BV | AGF &amp; Zeevruchten Import voor Retail en Horeca"/>
+  <meta name="twitter:description" content="BRCGS/IFS-geborgde import van verse AGF en zeevruchten uit Spanje voor supermarkten, horeca en groothandels."/>
   <!-- DNS prefetch -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
   <link rel="dns-prefetch" href="//fonts.gstatic.com"/>
@@ -27,18 +27,26 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      /* Basis */
       --wit:        #FAFAF6;
       --zand:       #F2EDE3;
-      --olijf:      #3D5A3E;
-      --olijf-licht:#5A7A5B;
-      --olijf-pale: #EBF0E8;
-      --terra:      #C4622D;
-      --terra-licht:#F0E4DA;
       --kool:       #1A1A14;
       --grijs:      #4A4A3F;
       --lijn:       #D8D3C8;
       --zon:        #E8B84B;
       --wa-groen:   #25D366;
+
+      /* AGF — bladgroen & citrusoranje */
+      --olijf:      #3D5A3E;
+      --olijf-licht:#5A7A5B;
+      --olijf-pale: #EBF0E8;
+      --terra:      #C4622D;
+      --terra-licht:#F0E4DA;
+
+      /* Zeevruchten — diepblauw */
+      --oceaan:       #1B4965;
+      --oceaan-licht: #2E6E8E;
+      --oceaan-pale:  #E7F0F5;
     }
 
     html { scroll-behavior: smooth; }
@@ -416,24 +424,108 @@
       gap: 4rem; margin-bottom: 4rem; align-items: end;
     }
 
-    .klant-types {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
+    /* ── NAV / FOOTER PORTAL KNOP ── */
+    .nav-portal {
+      background: var(--oceaan) !important; color: #fff !important;
+      padding: .5rem 1.1rem !important; border-radius: 6px;
+      font-size: .8125rem !important; font-weight: 600 !important;
+      display: inline-flex; align-items: center; gap: .4rem;
+      transition: background .2s !important;
     }
+    .nav-portal:hover { background: var(--oceaan-licht) !important; }
 
-    .klant-card {
-      background: var(--wit); border: 1.5px solid var(--lijn);
-      border-radius: 10px; padding: 1.5rem;
-      transition: border-color .2s, box-shadow .2s;
+    .footer-portal {
+      background: var(--oceaan); color: #fff !important;
+      padding: .5rem 1.1rem; border-radius: 6px;
+      font-size: .8125rem; font-weight: 600;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .4rem;
+      transition: background .2s;
     }
-    .klant-card:hover {
-      border-color: var(--olijf-licht);
-      box-shadow: 0 4px 16px rgba(61,90,62,.08);
-    }
+    .footer-portal:hover { background: var(--oceaan-licht); }
 
-    .klant-emoji { font-size: 1.75rem; margin-bottom: .75rem; display: block; }
-    .klant-card h3 { font-size: .9375rem; font-weight: 600; color: var(--kool); margin-bottom: .375rem; }
-    .klant-card p { font-size: .875rem; color: var(--grijs); line-height: 1.55; }
+    /* ── DOELGROEP HUB (3 pijlers) ── */
+    .doelgroep-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .doelgroep-card {
+      border: 1.5px solid var(--lijn); border-radius: 14px;
+      padding: 2rem 1.75rem; background: var(--wit);
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .doelgroep-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .doelgroep-card.accent-oceaan { background: var(--oceaan-pale); border-color: rgba(27,73,101,.25); }
+    .doelgroep-icon { font-size: 2rem; }
+    .doelgroep-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--kool);
+    }
+    .doelgroep-card p { font-size: .9rem; color: var(--grijs); line-height: 1.65; }
+    .doelgroep-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; padding-top: .5rem; }
+    .doelgroep-tag {
+      font-size: .6875rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      background: rgba(61,90,62,.1); color: var(--olijf);
+      border-radius: 20px; padding: .3rem .7rem;
+    }
+    .doelgroep-card.accent-oceaan .doelgroep-tag { background: rgba(27,73,101,.12); color: var(--oceaan); }
+
+    /* ── ESG / FOOD WASTE ── */
+    .esg { background: var(--kool); color: rgba(255,255,255,.85); }
+    .esg-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: center;
+    }
+    .esg-eyebrow {
+      font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--zon); margin-bottom: 1rem;
+    }
+    .esg-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 1.25rem;
+    }
+    .esg-body { font-size: 1.0625rem; color: rgba(255,255,255,.7); line-height: 1.75; max-width: 54ch; }
+    .esg-body strong { color: #fff; }
+    .esg-points { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .esg-point { display: grid; grid-template-columns: 40px 1fr; gap: 1rem; align-items: start; }
+    .esg-point-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: rgba(232,184,75,.15); display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem; flex-shrink: 0;
+    }
+    .esg-point h3 { font-size: .9375rem; font-weight: 600; color: #fff; margin-bottom: .2rem; }
+    .esg-point p { font-size: .875rem; color: rgba(255,255,255,.65); line-height: 1.6; }
+    .esg-panel {
+      background: rgba(255,255,255,.04); border: 1.5px solid rgba(255,255,255,.12);
+      border-radius: 14px; padding: 2rem;
+    }
+    .esg-metric { display: flex; justify-content: space-between; align-items: baseline; padding: .875rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .esg-metric:last-child { border-bottom: none; }
+    .esg-metric-label { font-size: .875rem; color: rgba(255,255,255,.6); }
+    .esg-metric-value { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--zon); text-align: right; }
+    .esg-panel-note { font-size: .75rem; color: rgba(255,255,255,.45); margin-top: 1rem; line-height: 1.6; }
+
+    /* ── ÁREA DE PRODUCTORES MODAL ── */
+    .portal-modal { max-width: 460px; }
+    .portal-modal h3 { color: var(--oceaan); }
+    .portal-lang-tag {
+      display: inline-block; font-size: .6875rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; background: var(--oceaan-pale); color: var(--oceaan);
+      border-radius: 20px; padding: .25rem .7rem; margin-bottom: 1rem;
+    }
+    .portal-steps { display: flex; flex-direction: column; gap: .875rem; margin-bottom: 1.5rem; }
+    .portal-step { display: grid; grid-template-columns: 28px 1fr; gap: .75rem; align-items: start; }
+    .portal-step-num {
+      width: 28px; height: 28px; border-radius: 50%; background: var(--oceaan); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: .8125rem; font-weight: 700; flex-shrink: 0;
+    }
+    .portal-step p { font-size: .875rem; color: var(--grijs); line-height: 1.5; margin: 0; }
+    .portal-step strong { color: var(--kool); }
+    .portal-cta {
+      background: var(--oceaan); color: #fff; border: none; border-radius: 6px;
+      padding: .875rem; font-size: .9375rem; font-weight: 600; cursor: pointer; width: 100%;
+      font-family: inherit; transition: background .2s; text-align: center; text-decoration: none; display: block;
+      box-sizing: border-box;
+    }
+    .portal-cta:hover { background: var(--oceaan-licht); }
 
     /* ── REGIO BANNER ── */
     .regio-banner {
@@ -660,6 +752,9 @@
       .wa-banner { flex-direction: column; text-align: center; }
       .prod-section.active { grid-template-columns: repeat(1, 1fr) !important; }
       .prod-grid { grid-template-columns: repeat(1, 1fr) !important; }
+      .doelgroep-grid { grid-template-columns: 1fr; }
+      .esg-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .esg-metric-value { text-align: left; }
     }
 
     /* ── ANIMATIES ── */
@@ -716,10 +811,11 @@
 
 </svg></a>
   <ul class="nav-links">
-    <li><a href="#waarom">Waarom wij</a></li>
+    <li><a href="#doelgroepen">Voor wie</a></li>
     <li><a href="#assortiment">Assortiment</a></li>
-    <li><a href="#werkgebied">Werkgebied</a></li>
+    <li><a href="#duurzaamheid">Duurzaamheid</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#" class="nav-portal" onclick="openPortalModal(event)">🔐 Área de Productores</a></li>
     <li><a href="#contact" class="nav-cta">Offerte aanvragen</a></li>
 
   </ul>
@@ -731,14 +827,14 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-left">
-    <p class="hero-eyebrow">AGF-importeur &amp; zeevruchten groothandel · Spanje–Nederland</p>
+    <p class="hero-eyebrow">BRCGS/IFS-geborgde AGF &amp; zeevruchten import · Spanje–Nederland</p>
     <h1 class="hero-title">
       AGF &amp; zeevruchten<br/>
       direct uit <em>Spanje</em><br/>
       naar uw koelcel
     </h1>
     <p class="hero-sub">
-      Wij importeren dagverse groenten, fruit en zeevruchten direct van Spaanse telers en vissers. Geen tussenhandel, eerlijke prijzen en volledige traceerbaarheid van perceel tot pallet.
+      Eén importeur voor vers fruit, groenten én zeevruchten, rechtstreeks van Spaanse telers en vispartners. BRCGS/IFS-geborgd via ons 3PL-koelhuis in de regio Rotterdam/Barendrecht, met volledige traceerbaarheid van perceel of kade tot pallet.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Neem contact op</a>
@@ -841,7 +937,7 @@
       <p class="section-eyebrow">Waarom Ibérica Fresh?</p>
       <h2 class="section-title">Waarom kiezen voor Ibérica Fresh als AGF-importeur?</h2>
       <p class="section-body">
-        De meeste Spaanse groenten en zeevruchten passeren twee of drie tussenhandelaren voor ze bij u aankomen. Ibérica Fresh werkt als directe AGF-importeur en zeevruchten groothandel rechtstreeks met vaste telers in Murcia, Valencia en Almería: betere kwaliteit, scherpere inkoopprijzen en volledige transparantie over herkomst.
+        De meeste Spaanse groenten, fruit en zeevruchten passeren twee of drie tussenhandelaren voor ze bij u aankomen. Ibérica Fresh werkt als directe AGF- en zeevruchten-importeur rechtstreeks met vaste telers en vispartners in Spanje, via een BRCGS/IFS-gecertificeerd 3PL-koelhuis in de regio Rotterdam/Barendrecht: betere kwaliteit, scherpere inkoopprijzen en volledige transparantie over herkomst.
       </p>
     </div>
     <div class="redenen fade-in">
@@ -862,8 +958,8 @@
       <div class="reden">
         <div class="reden-icon">📋</div>
         <div>
-          <h3>HACCP-gecertificeerd</h3>
-          <p>Iedere partij wordt bij binnenkomst gecontroleerd op temperatuur, conditie, houdbaarheid en allergenen, en volledig vastgelegd in ons systeem.</p>
+          <h3>BRCGS/IFS &amp; MRL-bewaakt</h3>
+          <p>Ons kantoor en 3PL-koelhuis zijn BRCGS/IFS-gecertificeerd. Elke partij wordt daarnaast in het laboratorium getoetst op MRL-residuwaarden, volledig vastgelegd in ons systeem.</p>
         </div>
       </div>
       <div class="reden">
@@ -876,8 +972,8 @@
       <div class="reden">
         <div class="reden-icon">💶</div>
         <div>
-          <h3>Transparante prijsstelling</h3>
-          <p>Vaste wekelijkse prijslijst zonder verborgen kosten. BTW-verlegging op Spaanse inkopen wordt correct en tijdig afgehandeld.</p>
+          <h3>Weight-correction &amp; transparante prijsstelling</h3>
+          <p>U betaalt op basis van het werkelijk gewogen gewicht bij aflevering. Vaste wekelijkse prijslijst zonder verborgen kosten, BTW-verlegging op Spaanse inkopen correct en tijdig afgehandeld.</p>
         </div>
       </div>
     </div>
@@ -890,7 +986,7 @@
     <div class="assortiment-header fade-in">
       <p class="section-eyebrow">Assortiment</p>
       <h2 class="section-title">Verse AGF en zeevruchten uit Spanje</h2>
-      <p class="section-body">Onze eigen keurmeester selecteert ter plaatse in Murcia, Almería en Vigo op maatsortering, kleur en houdbaarheid. Van Spaanse paprika en vleestomaat tot gambas en octopus — rechtstreeks naar uw magazijn.</p>
+      <p class="section-body">Onze eigen keurmeester selecteert ter plaatse in Murcia, Almería en Vigo op maatsortering, kleur en houdbaarheid. Van Spaanse paprika en vleestomaat tot gambas en octopus — via ons BRCGS/IFS-gecertificeerde 3PL-koelhuis in Rotterdam/Barendrecht rechtstreeks naar uw magazijn.</p>
     </div>
 
     <div class="prod-tabs fade-in">
@@ -1092,39 +1188,101 @@
   </div>
 </section>
 
-<!-- WERKGEBIED & KLANTEN -->
-<section class="werkgebied" id="werkgebied">
+<!-- DOELGROEPEN -->
+<section class="werkgebied" id="doelgroepen">
   <div class="werkgebied-inner">
     <div class="werkgebied-header fade-in">
       <div>
-        <p class="section-eyebrow">Voor wie</p>
-        <h2 class="section-title">Groothandel en import voor de Nederlandse markt</h2>
+        <p class="section-eyebrow">Voor wie werken wij</p>
+        <h2 class="section-title">Eén importeur, drie scherp bediende doelgroepen</h2>
       </div>
       <p class="section-body">
-        Wij leveren aan groothandels, etnische supermarkten, horecagroothandels en visspeciaalzaken in de Randstad. Wekelijkse import van verse Spaanse groenten, fruit en IQF-zeevruchten met betrouwbare levering en correcte documentatie.
+        Of u nu retail-inkoper, horecagroothandel of Spaanse leverancier bent: Ibérica Fresh is ingericht op uw specifieke eisen rond kwaliteitsborging, snelheid of eerlijke afrekening.
       </p>
     </div>
-    <div class="klant-types fade-in">
-      <div class="klant-card">
-        <span class="klant-emoji">🏪</span>
-        <h3>Etnische supermarkten</h3>
-        <p>Specialiteiten en dagverse producten die reguliere groothandels niet of nauwelijks aanbieden, in de kwaliteit die uw klanten verwachten.</p>
+    <div class="doelgroep-grid fade-in">
+      <div class="doelgroep-card">
+        <span class="doelgroep-icon">🏬</span>
+        <h3>Supermarkten (etnisch &amp; regulier)</h3>
+        <p>Eén vaste importeur voor onze gecombineerde importstromen van AGF én zeevruchten, met strenge kwaliteitsborging op kantoor én in ons BRCGS/IFS-gecertificeerde 3PL-koelhuis in Rotterdam/Barendrecht.</p>
+        <div class="doelgroep-tags">
+          <span class="doelgroep-tag">BRCGS/IFS</span>
+          <span class="doelgroep-tag">Gecombineerde import</span>
+        </div>
       </div>
-      <div class="klant-card">
-        <span class="klant-emoji">🏭</span>
-        <h3>Groothandels</h3>
-        <p>Palletleveringen met constante kwaliteit, scherpe prijzen en alle documentatie die u en uw klanten nodig hebben.</p>
+      <div class="doelgroep-card">
+        <span class="doelgroep-icon">🍽️</span>
+        <h3>Horeca, Groothandels &amp; Visspeciaalzaken</h3>
+        <p>Verse AGF en zeevruchten met korte levertijden en flexibele volumes. U betaalt op basis van het werkelijk gewogen gewicht bij aflevering (weight-correction) &mdash; nooit voor meer dan wat er daadwerkelijk in de kist zit.</p>
+        <div class="doelgroep-tags">
+          <span class="doelgroep-tag">Weight-correction</span>
+          <span class="doelgroep-tag">Snelle logistiek</span>
+        </div>
       </div>
-      <div class="klant-card">
-        <span class="klant-emoji">🍽️</span>
-        <h3>Horeca & catering</h3>
-        <p>Seizoensverse producten met korte levertijden, bij uitstek geschikt voor keukens met een Spaans of mediterraan karakter.</p>
+      <div class="doelgroep-card accent-oceaan">
+        <span class="doelgroep-icon">🇪🇸</span>
+        <h3>Spaanse Leveranciers (telers &amp; vispartners)</h3>
+        <p>Telers en vispartners werken met ons op basis van een transparant commissiemodel van 8&ndash;10%, zonder verborgen inhoudingen. Via het beveiligde Área de Productores-portaal volgt u uw Liquidaciones en beheert u uw certificaten in het Spaans.</p>
+        <div class="doelgroep-tags">
+          <span class="doelgroep-tag">8&ndash;10% commissie</span>
+          <span class="doelgroep-tag">Liquidaciones</span>
+        </div>
       </div>
-      <div class="klant-card">
-        <span class="klant-emoji">🐟</span>
-        <h3>Visspeciaalzaken</h3>
-        <p>Gambas, octopus, heek en andere Atlantische soorten, direct uit Vigo. Vers, IQF-bevroren en volledig gecertificeerd.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DUURZAAMHEID & FOOD WASTE -->
+<section class="esg" id="duurzaamheid">
+  <div class="esg-inner">
+    <div class="fade-in">
+      <p class="esg-eyebrow">Duurzaamheid &amp; Food Waste Management</p>
+      <h2 class="esg-title">Meetbare duurzaamheid, direct inzetbaar in uw retail-tender</h2>
+      <p class="esg-body">
+        Achter Ibérica Fresh draait een ERP-systeem dat <strong>derving en CO₂-impact live meet</strong>, per productstroom en per levering. De emissiefactoren zijn gebaseerd op openbare data van <strong>Our World in Data</strong>, per productcategorie gekoppeld aan onze eigen inkoop- en dervingscijfers.
+      </p>
+      <div class="esg-points">
+        <div class="esg-point">
+          <div class="esg-point-icon">📉</div>
+          <div>
+            <h3>Food Waste % per productstroom</h3>
+            <p>Derving wordt automatisch vastgelegd bij in- en uitslag in ons 3PL-koelhuis, uitgesplitst naar AGF en zeevruchten.</p>
+          </div>
+        </div>
+        <div class="esg-point">
+          <div class="esg-point-icon">🌍</div>
+          <div>
+            <h3>CO₂-rapportage op basis van Our World in Data</h3>
+            <p>Elke productcategorie krijgt een emissiefactor toegekend, zodat de klimaatimpact van uw bestelling inzichtelijk en onderbouwd is.</p>
+          </div>
+        </div>
+        <div class="esg-point">
+          <div class="esg-point-icon">📄</div>
+          <div>
+            <h3>Direct beschikbaar voor retail-tenders</h3>
+            <p>Wij leveren een sluitende duurzaamheidsrapportage aan bij offertetrajecten &mdash; geen losse Excel-oefening, maar een export uit hetzelfde systeem waarmee wij ook leveren.</p>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="esg-panel fade-in">
+      <div class="esg-metric">
+        <span class="esg-metric-label">Food Waste %</span>
+        <span class="esg-metric-value">Live in ERP</span>
+      </div>
+      <div class="esg-metric">
+        <span class="esg-metric-label">CO₂-factor bron</span>
+        <span class="esg-metric-value">Our World in Data</span>
+      </div>
+      <div class="esg-metric">
+        <span class="esg-metric-label">Rapportage-eenheid</span>
+        <span class="esg-metric-value">Per productcategorie</span>
+      </div>
+      <div class="esg-metric">
+        <span class="esg-metric-label">Beschikbaar voor</span>
+        <span class="esg-metric-value">Retail-tenders</span>
+      </div>
+      <p class="esg-panel-note">Cijfers op aanvraag beschikbaar als PDF- of Excel-export, aan te leveren bij offerte- en tenderaanvragen van retail-inkopers.</p>
     </div>
   </div>
 </section>
@@ -1207,6 +1365,7 @@
               <option>Verse AGF (groenten & fruit)</option>
               <option>Zeevruchten & vis</option>
               <option>AGF én zeevruchten</option>
+              <option>Ik ben Spaanse teler / vispartner (Área de Productores)</option>
               <option>Meer informatie / kennismaking</option>
             </select>
           </div>
@@ -1251,13 +1410,13 @@
   <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2"/>
 
   <!-- Golflijnen in cirkel -->
-  <clipPath id="cc">
+  <clipPath id="cc-footer">
     <circle cx="28" cy="28" r="23"/>
   </clipPath>
   <path d="M4 30 Q11 24 18 30 Q25 36 32 30 Q39 24 46 30 Q52 36 58 30"
-        fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" clip-path="url(#cc)"/>
+        fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" clip-path="url(#cc-footer)"/>
   <path d="M4 37 Q11 31 18 37 Q25 43 32 37 Q39 31 46 37 Q52 43 58 37"
-        fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" opacity="0.4" clip-path="url(#cc)"/>
+        fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" opacity="0.4" clip-path="url(#cc-footer)"/>
 
   <!-- Olijfblad -->
   <path d="M28 6 Q34 14 28 22 Q22 14 28 6Z" fill="rgba(255,255,255,0.85)"/>
@@ -1281,8 +1440,11 @@
         fill="rgba(255,255,255,0.85)">FRESH TRADING</text>
 
 </svg></a>
-  <!-- KVK --><p>KvK: <span id="kvk-nummer">[na oprichting invullen]</span> · BTW: NL[nummer] · Regio Barendrecht</p>
-  <p>© 2026 Ibérica Fresh Trading BV · <a href="mailto:info@ibericafresh.nl">info@ibericafresh.nl</a> · <a href="#privacy">Privacyverklaring</a></p>
+  <div>
+    <!-- KVK --><p>KvK: <span id="kvk-nummer">[na oprichting invullen]</span> · BTW: NL[nummer] · Regio Barendrecht</p>
+    <p>© 2026 Ibérica Fresh Trading BV · <a href="mailto:info@ibericafresh.nl">info@ibericafresh.nl</a> · <a href="#privacy">Privacyverklaring</a></p>
+  </div>
+  <a href="#" class="footer-portal" onclick="openPortalModal(event)">🔐 Área de Productores</a>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
@@ -1312,6 +1474,32 @@
     </div>
     <button class="modal-submit" onclick="aanmeldenWa()">Aanmelden voor prijslijst</button>
     <p class="modal-note">Gratis · U kunt zich op elk moment uitschrijven.</p>
+  </div>
+</div>
+
+<!-- ÁREA DE PRODUCTORES MODAL -->
+<div class="modal-overlay" id="portal-modal">
+  <div class="modal portal-modal">
+    <button class="modal-close" onclick="closeModal('portal-modal')">×</button>
+    <span class="portal-lang-tag">ES · Acceso exclusivo</span>
+    <h3>Área de Productores</h3>
+    <p>Ibérica Fresh Trading BV ofrece a sus proveedores españoles (agricultores y socios pesqueros) un acceso seguro y personalizado, sin necesidad de usuario ni contraseña.</p>
+    <div class="portal-steps">
+      <div class="portal-step">
+        <div class="portal-step-num">1</div>
+        <p><strong>Enlace único por empresa.</strong> Cada proveedor recibe por correo electrónico un enlace personal e intransferible.</p>
+      </div>
+      <div class="portal-step">
+        <div class="portal-step-num">2</div>
+        <p><strong>Suba sus certificados.</strong> GLOBALG.A.P./GRASP para productores agrícolas, o la documentación de seguridad alimentaria correspondiente para socios pesqueros.</p>
+      </div>
+      <div class="portal-step">
+        <div class="portal-step-num">3</div>
+        <p><strong>Consulte sus liquidaciones.</strong> Vea en tiempo real sus liquidaciones netas, calculadas sobre nuestro modelo de comisión transparente del 8&ndash;10%.</p>
+      </div>
+    </div>
+    <a href="mailto:info@ibericafresh.nl?subject=Solicitud%20de%20acceso%20al%20%C3%81rea%20de%20Productores" class="portal-cta">Solicitar mi enlace de acceso</a>
+    <p class="modal-note">¿Ya es proveedor y no encuentra su enlace? Escríbanos a info@ibericafresh.nl</p>
   </div>
 </div>
 
@@ -1372,6 +1560,7 @@
 
   // ── Modals ──
   function openWaModal(e) { e.preventDefault(); document.getElementById('wa-modal').classList.add('open'); }
+  function openPortalModal(e) { e.preventDefault(); document.getElementById('portal-modal').classList.add('open'); }
   function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
   // Klik buiten modal sluit hem
