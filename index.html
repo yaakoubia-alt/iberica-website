@@ -27,26 +27,38 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Basis */
-      --wit:        #FAFAF6;
-      --zand:       #F2EDE3;
-      --kool:       #1A1A14;
-      --grijs:      #4A4A3F;
-      --lijn:       #D8D3C8;
+      /* Basis - clean, neutral premium canvas */
+      --wit:        #FCFCFA;
+      --zand:       #F3F0E7;
+      --kool:       #14170F;
+      --grijs:      #565C4F;
+      --lijn:       #E2DECF;
       --zon:        #E8B84B;
       --wa-groen:   #25D366;
 
-      /* AGF — bladgroen & citrusoranje */
-      --olijf:      #3D5A3E;
-      --olijf-licht:#5A7A5B;
-      --olijf-pale: #EBF0E8;
+      /* AGF - levendig bladgroen (groente/fruit-segment) */
+      --olijf:      #1F6E42;
+      --olijf-licht:#2E8B57;
+      --olijf-pale: #EAF3EC;
       --terra:      #C4622D;
       --terra-licht:#F0E4DA;
 
-      /* Zeevruchten — diepblauw */
-      --oceaan:       #1B4965;
-      --oceaan-licht: #2E6E8E;
-      --oceaan-pale:  #E7F0F5;
+      /* Zeevruchten - diepe oceaanblauw (vis-segment) */
+      --oceaan:       #123C57;
+      --oceaan-licht: #1E5C82;
+      --oceaan-pale:  #E8F1F6;
+
+      /* Vorm & diepte */
+      --radius-sm:  8px;
+      --radius-md:  12px;
+      --radius-lg:  18px;
+      --shadow-sm:  0 2px 10px rgba(18,40,30,.06);
+      --shadow-md:  0 10px 32px rgba(18,40,30,.09);
+      --shadow-lg:  0 24px 64px rgba(10,26,30,.18);
+
+      /* Beweging - sterke, doelbewuste easing (geen standaard CSS-curves) */
+      --ease-out:    cubic-bezier(.23,1,.32,1);
+      --ease-in-out: cubic-bezier(.77,0,.175,1);
     }
 
     html { scroll-behavior: smooth; }
@@ -62,7 +74,7 @@
     /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(250,250,246,.92);
+      background: rgba(252,252,250,.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--lijn);
       padding: 0 5vw;
@@ -89,9 +101,9 @@
 
     .nav-cta {
       background: var(--olijf); color: #fff !important;
-      padding: .5rem 1.25rem; border-radius: 6px;
+      padding: .5rem 1.25rem; border-radius: var(--radius-sm);
       font-size: .875rem !important; font-weight: 600 !important;
-      transition: background .2s !important;
+      transition: background .2s var(--ease-out) !important, transform .18s var(--ease-out) !important;
     }
     .nav-cta:hover { background: var(--olijf-licht) !important; }
 
@@ -145,7 +157,7 @@
     /* ── HERO ── */
     .hero {
       min-height: 92vh;
-      background: var(--olijf);
+      background: linear-gradient(128deg, #163B24 0%, var(--olijf) 38%, var(--oceaan-licht) 78%, var(--oceaan) 100%);
       display: grid;
       grid-template-columns: 1fr 1fr;
       overflow: hidden;
@@ -159,15 +171,19 @@
     }
 
     .hero-eyebrow {
-      font-size: .75rem; font-weight: 600; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--zon);
-      margin-bottom: 1.5rem;
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+      color: #fff;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px; padding: .45rem .9rem;
+      margin-bottom: 1.75rem;
     }
+    .hero-eyebrow .icon { color: var(--zon); width: 1.05em; height: 1.05em; }
 
     .hero-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700; line-height: 1.1;
+      font-weight: 700; line-height: 1.08; letter-spacing: -.015em;
       color: #fff; margin-bottom: 1.5rem;
     }
     .hero-title em { font-style: italic; color: var(--zon); }
@@ -181,40 +197,46 @@
 
     .btn-primary {
       background: var(--terra); color: #fff;
-      padding: .875rem 2rem; border-radius: 6px;
+      padding: .875rem 2rem; border-radius: var(--radius-sm);
       font-size: .9375rem; font-weight: 600;
       text-decoration: none; display: inline-block;
-      transition: background .2s, transform .15s;
+      transition: background .2s var(--ease-out), transform .18s var(--ease-out), box-shadow .2s var(--ease-out);
     }
-    .btn-primary:hover { background: #b5561f; transform: translateY(-1px); }
+    @media (hover:hover) and (pointer:fine) {
+      .btn-primary:hover { background: #b5561f; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    }
 
     .btn-ghost {
       border: 1.5px solid rgba(255,255,255,.35); color: #fff;
-      padding: .875rem 2rem; border-radius: 6px;
+      padding: .875rem 2rem; border-radius: var(--radius-sm);
       font-size: .9375rem; font-weight: 500;
       text-decoration: none; display: inline-flex; align-items: center; gap: .5rem;
-      transition: border-color .2s, background .2s;
+      transition: border-color .2s var(--ease-out), background .2s var(--ease-out), transform .18s var(--ease-out);
     }
-    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+    @media (hover:hover) and (pointer:fine) {
+      .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); transform: translateX(2px); }
+    }
 
     /* [2] WhatsApp hero-knop */
     .btn-wa {
       background: var(--wa-groen); color: #fff;
-      padding: .875rem 2rem; border-radius: 6px;
+      padding: .875rem 2rem; border-radius: var(--radius-sm);
       font-size: .9375rem; font-weight: 600;
       text-decoration: none; display: inline-flex; align-items: center; gap: .625rem;
-      transition: background .2s, transform .15s;
+      transition: background .2s var(--ease-out), transform .18s var(--ease-out), box-shadow .2s var(--ease-out);
       white-space: nowrap;
     }
-    .btn-wa:hover { background: #1fb857; transform: translateY(-1px); }
+    @media (hover:hover) and (pointer:fine) {
+      .btn-wa:hover { background: #1fb857; transform: translateY(-1px); box-shadow: 0 10px 28px rgba(37,211,102,.3); }
+    }
 
     .hero-right { position: relative; overflow: hidden; }
 
     .hero-illustration {
       width: 100%; height: 100%;
       background:
-        radial-gradient(ellipse 60% 40% at 70% 60%, rgba(228,180,100,.18) 0%, transparent 70%),
-        linear-gradient(160deg, #2D4A2E 0%, #3D5A3E 40%, #4A6B4B 100%);
+        radial-gradient(ellipse 60% 40% at 72% 55%, rgba(255,255,255,.14) 0%, transparent 70%),
+        linear-gradient(160deg, rgba(30,92,130,.35) 0%, rgba(18,60,87,.55) 55%, rgba(20,23,15,.35) 100%);
       position: relative;
     }
 
@@ -222,14 +244,14 @@
       content: "";
       position: absolute; inset: 0;
       background-image:
-        radial-gradient(circle 120px at 65% 35%, rgba(232,184,75,.12) 0%, transparent 70%),
-        radial-gradient(circle 200px at 80% 70%, rgba(196,98,45,.08) 0%, transparent 70%);
+        radial-gradient(circle 130px at 66% 32%, rgba(232,184,75,.14) 0%, transparent 70%),
+        radial-gradient(circle 220px at 80% 72%, rgba(255,255,255,.07) 0%, transparent 70%);
     }
 
     .float-badge {
       display: block;
       position: absolute;
-      background: rgba(250,250,246,.95);
+      background: rgba(252,252,250,.95);
       border: 1.5px solid var(--lijn);
       border-radius: 12px;
       padding: 1rem 1.25rem;
@@ -250,16 +272,10 @@
     /* ── SECTIES ALGEMEEN ── */
     section { padding: 6rem 5vw; }
 
-    .section-eyebrow {
-      font-size: .75rem; font-weight: 600; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--terra);
-      margin-bottom: 1rem;
-    }
-
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-      font-weight: 700; line-height: 1.15;
+      font-size: clamp(1.9rem, 3.7vw, 2.9rem);
+      font-weight: 700; line-height: 1.14; letter-spacing: -.01em;
       color: var(--kool); margin-bottom: 1.25rem;
     }
 
@@ -270,7 +286,7 @@
 
     /* ── [2] WHATSAPP PRIJSLIJST BANNER ── */
     .wa-banner {
-      background: linear-gradient(135deg, #1A3A1B 0%, #2D5A2E 100%);
+      background: linear-gradient(135deg, #12331D 0%, var(--olijf) 100%);
       padding: 2.5rem 5vw;
       display: flex; align-items: center; justify-content: space-between;
       gap: 2rem; flex-wrap: wrap;
@@ -323,11 +339,12 @@
     }
 
     .reden-icon {
-      width: 48px; height: 48px; border-radius: 10px;
-      background: var(--olijf-pale);
+      width: 48px; height: 48px; border-radius: var(--radius-md);
+      background: var(--olijf-pale); color: var(--olijf);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem; flex-shrink: 0;
+      flex-shrink: 0;
     }
+    .reden-icon .icon { width: 1.3rem; height: 1.3rem; }
 
     .reden h3 { font-size: 1rem; font-weight: 600; color: var(--kool); margin-bottom: .25rem; }
     .reden p { font-size: .9375rem; color: var(--grijs); line-height: 1.65; }
@@ -348,15 +365,18 @@
     }
 
     .prod-card {
-      border-radius: 12px; overflow: hidden;
+      border-radius: var(--radius-md); overflow: hidden;
       border: 1.5px solid var(--lijn);
       background: var(--wit);
-      transition: box-shadow .2s, transform .2s;
+      transition: box-shadow .25s var(--ease-out), transform .25s var(--ease-out), border-color .25s var(--ease-out);
       cursor: default;
     }
-    .prod-card:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,.10);
-      transform: translateY(-3px);
+    @media (hover:hover) and (pointer:fine) {
+      .prod-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-4px);
+        border-color: transparent;
+      }
     }
 
     .prod-img {
@@ -374,7 +394,7 @@
 
     .prod-tag {
       position: absolute; top: .75rem; left: .75rem;
-      background: rgba(250,250,246,.9); border: 1px solid var(--lijn);
+      background: rgba(252,252,250,.9); border: 1px solid var(--lijn);
       border-radius: 20px; padding: .25rem .625rem;
       font-size: .6875rem; font-weight: 700;
       letter-spacing: .08em; text-transform: uppercase;
@@ -386,7 +406,12 @@
 
     .prod-info { padding: 1rem 1.125rem 1.25rem; }
     .prod-info h3 { font-size: .9375rem; font-weight: 700; color: var(--kool); margin-bottom: .25rem; }
-    .prod-info .prod-regio { font-size: .8125rem; color: var(--grijs); }
+    .prod-info .prod-regio {
+      font-size: .8125rem; color: var(--grijs);
+      display: inline-flex; align-items: center; gap: .35rem;
+    }
+    .prod-regio-icon { display: inline-flex; color: var(--terra); }
+    .prod-regio-icon .icon { width: .85rem; height: .85rem; }
     .prod-info .prod-verpakking {
       margin-top: .5rem; font-size: .75rem; color: var(--olijf);
       font-weight: 600; letter-spacing: .04em;
@@ -397,16 +422,19 @@
       flex-wrap: wrap;
     }
     .prod-tab {
-      padding: .4rem 1rem; border-radius: 20px;
+      padding: .4rem 1rem; border-radius: 999px;
       border: 1.5px solid var(--lijn); background: none;
       font-size: .8125rem; font-weight: 600; color: var(--grijs);
       cursor: pointer; font-family: inherit;
-      transition: all .15s;
+      transition: background .18s var(--ease-out), border-color .18s var(--ease-out), color .18s var(--ease-out), transform .15s var(--ease-out);
+      display: inline-flex; align-items: center; gap: .4rem;
     }
     .prod-tab.active {
       background: var(--olijf); border-color: var(--olijf); color: #fff;
     }
-    .prod-tab:hover:not(.active) { border-color: var(--olijf); color: var(--olijf); }
+    @media (hover:hover) and (pointer:fine) {
+      .prod-tab:hover:not(.active) { border-color: var(--olijf); color: var(--olijf); }
+    }
 
     .prod-section { display: none; }
     .prod-section.active {
@@ -427,19 +455,20 @@
     /* ── NAV / FOOTER PORTAL KNOP ── */
     .nav-portal {
       background: var(--oceaan) !important; color: #fff !important;
-      padding: .5rem 1.1rem !important; border-radius: 6px;
+      padding: .5rem 1.1rem !important; border-radius: var(--radius-sm);
       font-size: .8125rem !important; font-weight: 600 !important;
-      display: inline-flex; align-items: center; gap: .4rem;
-      transition: background .2s !important;
+      display: inline-flex; align-items: center; gap: .45rem;
+      transition: background .2s var(--ease-out) !important, transform .18s var(--ease-out) !important;
     }
     .nav-portal:hover { background: var(--oceaan-licht) !important; }
+    .nav-portal .icon, .footer-portal .icon { width: .95em; height: .95em; }
 
     .footer-portal {
       background: var(--oceaan); color: #fff !important;
-      padding: .5rem 1.1rem; border-radius: 6px;
+      padding: .5rem 1.1rem; border-radius: var(--radius-sm);
       font-size: .8125rem; font-weight: 600;
-      text-decoration: none; display: inline-flex; align-items: center; gap: .4rem;
-      transition: background .2s;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .45rem;
+      transition: background .2s var(--ease-out), transform .18s var(--ease-out);
     }
     .footer-portal:hover { background: var(--oceaan-licht); }
 
@@ -448,14 +477,22 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
     }
     .doelgroep-card {
-      border: 1.5px solid var(--lijn); border-radius: 14px;
-      padding: 2rem 1.75rem; background: var(--wit);
+      border: 1.5px solid var(--lijn); border-radius: var(--radius-lg);
+      padding: 2.25rem 1.85rem; background: var(--wit);
       display: flex; flex-direction: column; gap: 1rem;
-      transition: box-shadow .2s, transform .2s;
+      transition: box-shadow .25s var(--ease-out), transform .25s var(--ease-out);
     }
-    .doelgroep-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.08); transform: translateY(-2px); }
-    .doelgroep-card.accent-oceaan { background: var(--oceaan-pale); border-color: rgba(27,73,101,.25); }
-    .doelgroep-icon { font-size: 2rem; }
+    @media (hover:hover) and (pointer:fine) {
+      .doelgroep-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    }
+    .doelgroep-card.accent-oceaan { background: var(--oceaan-pale); border-color: rgba(18,60,87,.2); }
+    .doelgroep-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-md);
+      background: var(--olijf-pale); color: var(--olijf);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .doelgroep-icon .icon { width: 1.5rem; height: 1.5rem; }
+    .doelgroep-card.accent-oceaan .doelgroep-icon { background: rgba(255,255,255,.6); color: var(--oceaan); }
     .doelgroep-card h3 {
       font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--kool);
     }
@@ -474,28 +511,26 @@
       max-width: 1100px; margin: 0 auto;
       display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: center;
     }
-    .esg-eyebrow {
-      font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
-      color: var(--zon); margin-bottom: 1rem;
-    }
     .esg-title {
-      font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 1.25rem;
+      font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.7vw, 2.6rem);
+      font-weight: 700; color: #fff; line-height: 1.14; letter-spacing: -.01em; margin-bottom: 1.25rem;
     }
     .esg-body { font-size: 1.0625rem; color: rgba(255,255,255,.7); line-height: 1.75; max-width: 54ch; }
     .esg-body strong { color: #fff; }
     .esg-points { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
     .esg-point { display: grid; grid-template-columns: 40px 1fr; gap: 1rem; align-items: start; }
     .esg-point-icon {
-      width: 40px; height: 40px; border-radius: 8px;
-      background: rgba(232,184,75,.15); display: flex; align-items: center; justify-content: center;
-      font-size: 1.05rem; flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: var(--radius-sm);
+      background: rgba(232,184,75,.15); color: var(--zon);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
+    .esg-point-icon .icon { width: 1.15rem; height: 1.15rem; }
     .esg-point h3 { font-size: .9375rem; font-weight: 600; color: #fff; margin-bottom: .2rem; }
     .esg-point p { font-size: .875rem; color: rgba(255,255,255,.65); line-height: 1.6; }
     .esg-panel {
       background: rgba(255,255,255,.04); border: 1.5px solid rgba(255,255,255,.12);
-      border-radius: 14px; padding: 2rem;
+      border-radius: var(--radius-lg); padding: 2rem;
     }
     .esg-metric { display: flex; justify-content: space-between; align-items: baseline; padding: .875rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
     .esg-metric:last-child { border-bottom: none; }
@@ -520,19 +555,25 @@
     .portal-step p { font-size: .875rem; color: var(--grijs); line-height: 1.5; margin: 0; }
     .portal-step strong { color: var(--kool); }
     .portal-cta {
-      background: var(--oceaan); color: #fff; border: none; border-radius: 6px;
+      background: var(--oceaan); color: #fff; border: none; border-radius: var(--radius-sm);
       padding: .875rem; font-size: .9375rem; font-weight: 600; cursor: pointer; width: 100%;
-      font-family: inherit; transition: background .2s; text-align: center; text-decoration: none; display: block;
+      font-family: inherit; transition: background .2s var(--ease-out), transform .18s var(--ease-out);
+      text-align: center; text-decoration: none; display: block;
       box-sizing: border-box;
     }
-    .portal-cta:hover { background: var(--oceaan-licht); }
+    @media (hover:hover) and (pointer:fine) {
+      .portal-cta:hover { background: var(--oceaan-licht); }
+    }
 
     /* ── REGIO BANNER ── */
     .regio-banner {
-      background: var(--olijf); padding: 3rem 5vw;
+      background: linear-gradient(100deg, var(--olijf) 0%, var(--oceaan) 100%);
+      padding: 3rem 5vw;
       display: flex; align-items: center; justify-content: center;
       gap: 4rem; flex-wrap: wrap;
     }
+    .regio-item .flag { display: inline-flex; align-items: center; justify-content: center; }
+    .regio-item .flag .icon { width: 1.9rem; height: 1.9rem; }
 
     .regio-item { text-align: center; color: #fff; }
     .regio-item .flag { font-size: 2rem; margin-bottom: .5rem; }
@@ -565,11 +606,12 @@
       margin-top: 1.5rem;
     }
     .contact-detail-icon {
-      width: 40px; height: 40px; border-radius: 8px;
-      background: var(--olijf-pale); display: flex;
+      width: 40px; height: 40px; border-radius: var(--radius-sm);
+      background: var(--olijf-pale); color: var(--olijf); display: flex;
       align-items: center; justify-content: center;
-      font-size: 1rem; flex-shrink: 0;
+      flex-shrink: 0;
     }
+    .contact-detail-icon .icon { width: 1.1rem; height: 1.1rem; }
     .contact-detail-text strong { display: block; font-size: .875rem; font-weight: 600; color: var(--kool); }
     .contact-detail-text span { font-size: .875rem; color: var(--grijs); }
     .contact-detail-text a { color: var(--olijf); text-decoration: none; font-weight: 500; }
@@ -577,8 +619,8 @@
 
     .form-card {
       background: var(--wit); border: 1.5px solid var(--lijn);
-      border-radius: 12px; padding: 2rem;
-      box-shadow: 0 4px 24px rgba(0,0,0,.06);
+      border-radius: var(--radius-lg); padding: 2.25rem;
+      box-shadow: var(--shadow-sm);
     }
 
     .form-card h3 {
@@ -595,26 +637,31 @@
     .form-group select,
     .form-group textarea {
       padding: .75rem 1rem;
-      border: 1.5px solid var(--lijn); border-radius: 6px;
+      border: 1.5px solid var(--lijn); border-radius: var(--radius-sm);
       font-size: .9375rem; color: var(--kool);
       background: var(--wit); outline: none;
       font-family: inherit; width: 100%;
-      transition: border-color .2s;
+      transition: border-color .2s var(--ease-out), box-shadow .2s var(--ease-out);
       -webkit-appearance: none;
     }
     .form-group input:focus,
     .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--olijf); }
+    .form-group textarea:focus {
+      border-color: var(--olijf);
+      box-shadow: 0 0 0 3px rgba(31,110,66,.12);
+    }
     .form-group textarea { resize: vertical; min-height: 100px; }
 
     .form-submit {
       background: var(--olijf); color: #fff;
-      border: none; border-radius: 6px;
+      border: none; border-radius: var(--radius-sm);
       padding: .875rem 2rem; font-size: .9375rem; font-weight: 600;
       cursor: pointer; width: 100%; font-family: inherit;
-      transition: background .2s;
+      transition: background .2s var(--ease-out), transform .18s var(--ease-out);
     }
-    .form-submit:hover { background: var(--olijf-licht); }
+    @media (hover:hover) and (pointer:fine) {
+      .form-submit:hover { background: var(--olijf-licht); }
+    }
 
     .form-note { font-size: .8125rem; color: var(--grijs); text-align: center; margin-top: .75rem; }
 
@@ -626,11 +673,14 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 1.5rem; text-decoration: none;
       box-shadow: 0 4px 20px rgba(37,211,102,.4);
-      z-index: 50; transition: transform .2s, box-shadow .2s;
+      z-index: 50; transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out);
     }
-    .whatsapp-float:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 28px rgba(37,211,102,.5);
+    .whatsapp-float:active { transform: scale(.94); }
+    @media (hover:hover) and (pointer:fine) {
+      .whatsapp-float:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 28px rgba(37,211,102,.5);
+      }
     }
 
     /* ── FOOTER ── */
@@ -654,18 +704,26 @@
 
     /* ── WA AANMELDEN MODAL ── */
     .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+      display: flex; position: fixed; inset: 0; z-index: 200;
+      background: rgba(10,16,12,0); backdrop-filter: blur(0px);
       align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .25s var(--ease-out), background .25s var(--ease-out), backdrop-filter .25s var(--ease-out);
     }
-    .modal-overlay.open { display: flex; }
+    .modal-overlay.open {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      background: rgba(10,16,12,.55); backdrop-filter: blur(4px);
+    }
 
     .modal {
-      background: var(--wit); border-radius: 14px;
+      background: var(--wit); border-radius: var(--radius-lg);
       padding: 2.5rem; width: 100%; max-width: 400px;
-      box-shadow: 0 24px 64px rgba(0,0,0,.25);
+      box-shadow: var(--shadow-lg);
       position: relative;
+      transform: scale(.94) translateY(8px);
+      transition: transform .3s var(--ease-out);
     }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
     .modal-close {
       position: absolute; top: 1rem; right: 1rem;
       background: none; border: none; cursor: pointer;
@@ -680,36 +738,59 @@
     .modal .form-group { margin-bottom: .875rem; }
     .modal-submit {
       background: var(--wa-groen); color: #fff;
-      border: none; border-radius: 6px;
+      border: none; border-radius: var(--radius-sm);
       padding: .875rem; font-size: .9375rem; font-weight: 600;
       cursor: pointer; width: 100%; font-family: inherit;
-      transition: background .2s; margin-top: .25rem;
+      transition: background .2s var(--ease-out), transform .18s var(--ease-out); margin-top: .25rem;
     }
-    .modal-submit:hover { background: #1fb857; }
+    @media (hover:hover) and (pointer:fine) {
+      .modal-submit:hover { background: #1fb857; }
+    }
     .modal-note { font-size: .75rem; color: var(--grijs); text-align: center; margin-top: .75rem; }
 
 
     .form-success {
       display: none;
       position: fixed; inset: 0; z-index: 300;
-      background: rgba(250,250,246,.97);
+      background: rgba(252,252,250,.97);
       backdrop-filter: blur(8px);
       flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center; padding: 2rem;
     }
-    .form-success .check { font-size: 4rem; margin-bottom: 1.25rem; }
+    .form-success .check { font-size: 4rem; margin-bottom: 1.25rem; color: var(--olijf); }
     .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--olijf); margin-bottom: .75rem; }
     .form-success p { color: var(--grijs); font-size: 1rem; max-width: 36ch; line-height: 1.7; }
     .form-success .close-btn {
       margin-top: 1.5rem;
       background: var(--olijf); color: #fff;
-      border: none; border-radius: 6px;
+      border: none; border-radius: var(--radius-sm);
       padding: .75rem 2rem; font-size: .9375rem; font-weight: 600;
       cursor: pointer; font-family: inherit;
-      transition: background .2s;
+      transition: background .2s var(--ease-out), transform .18s var(--ease-out);
     }
-    .form-success .close-btn:hover { background: var(--olijf-licht); }
+    @media (hover:hover) and (pointer:fine) {
+      .form-success .close-btn:hover { background: var(--olijf-licht); }
+    }
+
+    /* ── ICONEN (vervangt emoji door consistente lijn-iconen) ── */
+    .icon {
+      width: 1em; height: 1em;
+      display: inline-block; vertical-align: -0.14em;
+      flex-shrink: 0;
+    }
+
+    /* ── MICRO-INTERACTIES: klik-feedback op alle CTA's ── */
+    .btn-primary, .btn-ghost, .btn-wa, .nav-cta, .nav-portal, .footer-portal,
+    .form-submit, .modal-submit, .portal-cta, .wa-banner-cta, .prod-tab, .close-btn {
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-primary:active, .btn-ghost:active, .btn-wa:active, .nav-cta:active, .nav-portal:active,
+    .footer-portal:active, .form-submit:active, .modal-submit:active, .portal-cta:active,
+    .wa-banner-cta:active, .prod-tab:active, .close-btn:active {
+      transform: scale(.97);
+      transition-duration: .1s;
+    }
 
     /* ── RESPONSIEF ── */
     @media (max-width: 1024px) {
@@ -739,7 +820,7 @@
         display: none;
         position: absolute;
         top: 64px; left: 0; right: 0;
-        background: rgba(250,250,246,.98);
+        background: rgba(252,252,250,.98);
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--lijn);
         flex-direction: column;
@@ -760,10 +841,38 @@
     /* ── ANIMATIES ── */
     @media (prefers-reduced-motion: no-preference) {
       .fade-in {
-        opacity: 0; transform: translateY(20px);
-        transition: opacity .6s ease, transform .6s ease;
+        opacity: 0; transform: translateY(22px) scale(.98);
+        transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
       }
       .fade-in.visible { opacity: 1; transform: none; }
+
+      /* Gestagegeerde reveal binnen kaart-groepen (30-80ms cascade) */
+      .redenen.fade-in .reden,
+      .doelgroep-grid.fade-in .doelgroep-card,
+      .esg-inner .fade-in .esg-point {
+        opacity: 0; transform: translateY(14px);
+        transition: opacity .5s var(--ease-out), transform .5s var(--ease-out);
+      }
+      .redenen.fade-in.visible .reden,
+      .doelgroep-grid.fade-in.visible .doelgroep-card,
+      .esg-inner .fade-in.visible .esg-point { opacity: 1; transform: none; }
+      .redenen.fade-in.visible .reden:nth-child(2),
+      .doelgroep-grid.fade-in.visible .doelgroep-card:nth-child(2),
+      .esg-inner .fade-in.visible .esg-point:nth-child(2) { transition-delay: .07s; }
+      .redenen.fade-in.visible .reden:nth-child(3),
+      .doelgroep-grid.fade-in.visible .doelgroep-card:nth-child(3),
+      .esg-inner .fade-in.visible .esg-point:nth-child(3) { transition-delay: .14s; }
+      .redenen.fade-in.visible .reden:nth-child(4) { transition-delay: .21s; }
+      .redenen.fade-in.visible .reden:nth-child(5) { transition-delay: .28s; }
+
+      .prod-section.active .prod-card.fade-in:nth-child(3n+2) { transition-delay: .06s; }
+      .prod-section.active .prod-card.fade-in:nth-child(3n+3) { transition-delay: .12s; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      /* Behoud subtiele opaciteit, verwijder positieverandering */
+      .prod-card, .doelgroep-card, .btn-primary, .btn-ghost, .btn-wa,
+      .whatsapp-float, .form-success .close-btn { transition-property: opacity, background, border-color, box-shadow !important; }
     }
   </style>
   <link rel="canonical" href="https://www.ibericafresh.nl/"/>
@@ -815,7 +924,7 @@
     <li><a href="#assortiment">Assortiment</a></li>
     <li><a href="#duurzaamheid">Duurzaamheid</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#" class="nav-portal" onclick="openPortalModal(event)">🔐 Área de Productores</a></li>
+    <li><a href="#" class="nav-portal" onclick="openPortalModal(event)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Área de Productores</a></li>
     <li><a href="#contact" class="nav-cta">Offerte aanvragen</a></li>
 
   </ul>
@@ -827,7 +936,7 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-left">
-    <p class="hero-eyebrow">BRCGS/IFS-geborgde AGF &amp; zeevruchten import · Spanje–Nederland</p>
+    <p class="hero-eyebrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>BRCGS/IFS-geborgde AGF &amp; zeevruchten import · Spanje&ndash;Nederland</p>
     <h1 class="hero-title">
       AGF &amp; zeevruchten<br/>
       direct uit <em>Spanje</em><br/>
@@ -837,7 +946,7 @@
       Eén importeur voor vers fruit, groenten én zeevruchten, rechtstreeks van Spaanse telers en vispartners. BRCGS/IFS-geborgd via ons 3PL-koelhuis in de regio Rotterdam/Barendrecht, met volledige traceerbaarheid van perceel of kade tot pallet.
     </p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Neem contact op</a>
+      <a href="#contact" class="btn-primary">Offerte aanvragen</a>
       <!-- [2] WhatsApp CTA in hero -->
       <a href="#" class="btn-wa" onclick="openWaModal(event)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -887,11 +996,11 @@
 <!-- [2] WHATSAPP PRIJSLIJST BANNER -->
 <div class="wa-banner">
   <div class="wa-banner-text">
-    <strong>📲 Elke maandag verse prijzen in uw WhatsApp</strong>
+    <strong><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.6 8.6 0 0 1-3.6-.8L3 20l1-4.6a8.4 8.4 0 0 1-.9-3.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z"/></svg>Elke maandag verse prijzen in uw WhatsApp</strong>
     <span>Actuele inkoopprijzen, beschikbaarheid en seizoensaanbiedingen, elke week vers in uw inbox.</span>
   </div>
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-    <span class="wa-badge">✅ Gratis · Uitschrijven wanneer u wilt</span>
+    <span class="wa-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>Gratis &middot; uitschrijven wanneer u wilt</span>
     <a href="#" class="wa-banner-cta" onclick="openWaModal(event)">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -904,29 +1013,29 @@
 <!-- REGIO BANNER -->
 <div class="regio-banner">
   <div class="regio-item">
-    <div class="flag">🥦</div>
+    <div class="flag"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c8 0 14-6 14-14V5h-2C9 5 5 11 5 19Z"/><path d="M5 21c0-5 3-9 7-11"/></svg></div>
     <strong>Murcia & Valencia</strong>
     <span>Tomaten, paprika, citrus</span>
   </div>
   <div class="regio-divider"></div>
   <div class="regio-item">
-    <div class="flag">🌿</div>
+    <div class="flag"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c8 0 14-6 14-14V5h-2C9 5 5 11 5 19Z"/><path d="M5 21c0-5 3-9 7-11"/></svg></div>
     <strong>Almería & Andalusië</strong>
     <span>Courgette, aubergine, venkel</span>
   </div>
   <div class="regio-divider"></div>
   <div class="regio-item">
-    <div class="flag">🐟</div>
+    <div class="flag"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-4 8-6 13-6 2 0 3.5 1 5 2-1.5 1-3 2-3 4s1.5 3 3 4c-1.5 1-3 2-5 2-5 0-10-2-13-6Z"/><path d="M17 10.5v3"/></svg></div>
     <strong>Vigo & Galicië</strong>
     <span>Gambas, octopus, heek</span>
   </div>
   <div class="regio-divider"></div>
   <div class="regio-item">
-    <div class="flag">🚛</div>
+    <div class="flag"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="7" width="12" height="9"/><path d="M13.5 10h4l3 3v3h-7z"/><circle cx="5.5" cy="18" r="1.6"/><circle cx="16.5" cy="18" r="1.6"/></svg></div>
     <strong>Regio Barendrecht</strong>
     <span>Distributiecentrum</span>
     <!-- [4] Locatie-badge -->
-    <div class="locatie-badge">📍 Agrologistiek cluster</div>
+    <div class="locatie-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>Agrologistiek cluster</div>
   </div>
 </div>
 
@@ -934,7 +1043,6 @@
 <section class="waarom" id="waarom">
   <div class="waarom-grid">
     <div class="waarom-intro fade-in">
-      <p class="section-eyebrow">Waarom Ibérica Fresh?</p>
       <h2 class="section-title">Waarom kiezen voor Ibérica Fresh als AGF-importeur?</h2>
       <p class="section-body">
         De meeste Spaanse groenten, fruit en zeevruchten passeren twee of drie tussenhandelaren voor ze bij u aankomen. Ibérica Fresh werkt als directe AGF- en zeevruchten-importeur rechtstreeks met vaste telers en vispartners in Spanje, via een BRCGS/IFS-gecertificeerd 3PL-koelhuis in de regio Rotterdam/Barendrecht: betere kwaliteit, scherpere inkoopprijzen en volledige transparantie over herkomst.
@@ -942,35 +1050,35 @@
     </div>
     <div class="redenen fade-in">
       <div class="reden">
-        <div class="reden-icon">🌱</div>
+        <div class="reden-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c8 0 14-6 14-14V5h-2C9 5 5 11 5 19Z"/><path d="M5 21c0-5 3-9 7-11"/></svg></div>
         <div>
           <h3>Directe telerrelaties</h3>
           <p>Vaste telers in Murcia, Valencia en Almería met meerjarige afspraken. Geen veiling, geen makelaar, geen onnodige marge ertussen.</p>
         </div>
       </div>
       <div class="reden">
-        <div class="reden-icon">🌡️</div>
+        <div class="reden-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14.5V5a2 2 0 1 0-4 0v9.5a4 4 0 1 0 4 0Z"/></svg></div>
         <div>
           <h3>Koude keten bewaakt</h3>
           <p>Elke rit wordt gemonitord op temperatuur van laden tot lossen. Bij iedere levering ontvangt u een temperatuurrapport.</p>
         </div>
       </div>
       <div class="reden">
-        <div class="reden-icon">📋</div>
+        <div class="reden-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v2H9z"/><path d="m9 13 2 2 4-4"/></svg></div>
         <div>
           <h3>BRCGS/IFS &amp; MRL-bewaakt</h3>
           <p>Ons kantoor en 3PL-koelhuis zijn BRCGS/IFS-gecertificeerd. Elke partij wordt daarnaast in het laboratorium getoetst op MRL-residuwaarden, volledig vastgelegd in ons systeem.</p>
         </div>
       </div>
       <div class="reden">
-        <div class="reden-icon">🔍</div>
+        <div class="reden-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.35-4.35"/></svg></div>
         <div>
           <h3>Lot-naar-klant traceerbaarheid</h3>
           <p>Bij een recall traceren wij binnen minuten alle afnemers van een specifiek lot. Van perceel tot pallet, volledig gedocumenteerd.</p>
         </div>
       </div>
       <div class="reden">
-        <div class="reden-icon">💶</div>
+        <div class="reden-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a3 3 0 0 1 5 1.1M9.5 14.8a3 3 0 0 0 5-1.1M8 12h6"/></svg></div>
         <div>
           <h3>Weight-correction &amp; transparante prijsstelling</h3>
           <p>U betaalt op basis van het werkelijk gewogen gewicht bij aflevering. Vaste wekelijkse prijslijst zonder verborgen kosten, BTW-verlegging op Spaanse inkopen correct en tijdig afgehandeld.</p>
@@ -984,14 +1092,13 @@
 <section class="assortiment" id="assortiment">
   <div class="assortiment-inner">
     <div class="assortiment-header fade-in">
-      <p class="section-eyebrow">Assortiment</p>
       <h2 class="section-title">Verse AGF en zeevruchten uit Spanje</h2>
       <p class="section-body">Onze eigen keurmeester selecteert ter plaatse in Murcia, Almería en Vigo op maatsortering, kleur en houdbaarheid. Van Spaanse paprika en vleestomaat tot gambas en octopus — via ons BRCGS/IFS-gecertificeerde 3PL-koelhuis in Rotterdam/Barendrecht rechtstreeks naar uw magazijn.</p>
     </div>
 
     <div class="prod-tabs fade-in">
-      <button class="prod-tab active" onclick="switchTab(event,'agf')">🥦 Verse AGF</button>
-      <button class="prod-tab" onclick="switchTab(event,'vis')">🐟 Zeevruchten & Vis</button>
+      <button class="prod-tab active" onclick="switchTab(event,'agf')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c8 0 14-6 14-14V5h-2C9 5 5 11 5 19Z"/><path d="M5 21c0-5 3-9 7-11"/></svg>Verse AGF</button>
+      <button class="prod-tab" onclick="switchTab(event,'vis')"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-4 8-6 13-6 2 0 3.5 1 5 2-1.5 1-3 2-3 4s1.5 3 3 4c-1.5 1-3 2-5 2-5 0-10-2-13-6Z"/><path d="M17 10.5v3"/></svg>Zeevruchten & Vis</button>
     </div>
 
     <!-- AGF -->
@@ -1003,7 +1110,7 @@
         </div>
         <div class="prod-info">
           <h3>Vleestomaat</h3>
-          <div class="prod-regio">🇪🇸 Murcia · Maat G/GG</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Murcia · Maat G/GG</div>
           <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
@@ -1014,7 +1121,7 @@
         </div>
         <div class="prod-info">
           <h3>Paprika mix tricolor</h3>
-          <div class="prod-regio">🇪🇸 Almería · Klasse I</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Almería · Klasse I</div>
           <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
@@ -1025,7 +1132,7 @@
         </div>
         <div class="prod-info">
           <h3>Sinaasappel Navel</h3>
-          <div class="prod-regio">🇪🇸 Valencia · Maat 1/2</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Valencia · Maat 1/2</div>
           <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
@@ -1036,7 +1143,7 @@
         </div>
         <div class="prod-info">
           <h3>Padrón pepers</h3>
-          <div class="prod-regio">🇪🇸 Galicië · Vers geplukt</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Galicië · Vers geplukt</div>
           <div class="prod-verpakking">Zakken · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
@@ -1046,7 +1153,7 @@
         </div>
         <div class="prod-info">
           <h3>Aubergine</h3>
-          <div class="prod-regio">🇪🇸 Almería · Klasse I</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Almería · Klasse I</div>
           <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
@@ -1056,7 +1163,7 @@
         </div>
         <div class="prod-info">
           <h3>Courgette</h3>
-          <div class="prod-regio">🇪🇸 Murcia · Klasse I</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Murcia · Klasse I</div>
           <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
@@ -1067,7 +1174,7 @@
         </div>
         <div class="prod-info">
           <h3>Artisjok</h3>
-          <div class="prod-regio">🇪🇸 Murcia · Groot formaat</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Murcia · Groot formaat</div>
           <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
@@ -1078,7 +1185,7 @@
         </div>
         <div class="prod-info">
           <h3>Citroen onbehandeld</h3>
-          <div class="prod-regio">🇪🇸 Murcia · Klasse I</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Murcia · Klasse I</div>
           <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
@@ -1089,7 +1196,7 @@
         </div>
         <div class="prod-info">
           <h3>Limoen</h3>
-          <div class="prod-regio">🇪🇸 Murcia · Klasse I</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Murcia · Klasse I</div>
           <div class="prod-verpakking">Kisten · Gekoeld 4–8°C · Op aanvraag</div>
         </div>
       </div>
@@ -1104,7 +1211,7 @@
         </div>
         <div class="prod-info">
           <h3>Octopus heel</h3>
-          <div class="prod-regio">🇪🇸 Vigo, Galicië · Maat T3/T4</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Vigo, Galicië · Maat T3/T4</div>
           <div class="prod-verpakking">Kartons · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
@@ -1115,7 +1222,7 @@
         </div>
         <div class="prod-info">
           <h3>Gambas L1 ongepeld</h3>
-          <div class="prod-regio">🇪🇸 Vigo, Galicië · 16–20 st/kg</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Vigo, Galicië · 16–20 st/kg</div>
           <div class="prod-verpakking">Dozen · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
@@ -1126,7 +1233,7 @@
         </div>
         <div class="prod-info">
           <h3>Inktvisringen</h3>
-          <div class="prod-regio">🇪🇸 Atlantisch · IQF</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Atlantisch · IQF</div>
           <div class="prod-verpakking">Zakken · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
@@ -1136,7 +1243,7 @@
         </div>
         <div class="prod-info">
           <h3>Heek filet</h3>
-          <div class="prod-regio">🇪🇸 Atlantisch · MSC</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Atlantisch · MSC</div>
           <div class="prod-verpakking">Kartons · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
@@ -1146,7 +1253,7 @@
         </div>
         <div class="prod-info">
           <h3>Zeebaars heel</h3>
-          <div class="prod-regio">🇪🇸 Atlantisch · Klasse A</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Atlantisch · Klasse A</div>
           <div class="prod-verpakking">Kisten · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
@@ -1156,7 +1263,7 @@
         </div>
         <div class="prod-info">
           <h3>Dorade heel</h3>
-          <div class="prod-regio">🇪🇸 Atlantisch · 300–500g</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Atlantisch · 300–500g</div>
           <div class="prod-verpakking">Kisten · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
@@ -1167,7 +1274,7 @@
         </div>
         <div class="prod-info">
           <h3>Sardines</h3>
-          <div class="prod-regio">🇪🇸 Atlantisch · Heel</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Atlantisch · Heel</div>
           <div class="prod-verpakking">Kisten · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
@@ -1177,7 +1284,7 @@
         </div>
         <div class="prod-info">
           <h3>Inktvis heel</h3>
-          <div class="prod-regio">🇪🇸 Atlantisch · IQF</div>
+          <div class="prod-regio"><span class="prod-regio-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>Atlantisch · IQF</div>
           <div class="prod-verpakking">Kartons · IQF −18°C · Op aanvraag</div>
         </div>
       </div>
@@ -1193,7 +1300,6 @@
   <div class="werkgebied-inner">
     <div class="werkgebied-header fade-in">
       <div>
-        <p class="section-eyebrow">Voor wie werken wij</p>
         <h2 class="section-title">Eén importeur, drie scherp bediende doelgroepen</h2>
       </div>
       <p class="section-body">
@@ -1202,7 +1308,7 @@
     </div>
     <div class="doelgroep-grid fade-in">
       <div class="doelgroep-card">
-        <span class="doelgroep-icon">🏬</span>
+        <span class="doelgroep-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10V6l1.5-3h13L20 6v4"/><path d="M4 10h16v10H4z"/><path d="M9 20v-6h6v6"/></svg></span>
         <h3>Supermarkten (etnisch &amp; regulier)</h3>
         <p>Eén vaste importeur voor onze gecombineerde importstromen van AGF én zeevruchten, met strenge kwaliteitsborging op kantoor én in ons BRCGS/IFS-gecertificeerde 3PL-koelhuis in Rotterdam/Barendrecht.</p>
         <div class="doelgroep-tags">
@@ -1211,7 +1317,7 @@
         </div>
       </div>
       <div class="doelgroep-card">
-        <span class="doelgroep-icon">🍽️</span>
+        <span class="doelgroep-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7a2 2 0 0 0 2 2v9M6 3v7M9 3v7M15 3c-1.7 0-3 2-3 5s1.3 5 3 5v9"/></svg></span>
         <h3>Horeca, Groothandels &amp; Visspeciaalzaken</h3>
         <p>Verse AGF en zeevruchten met korte levertijden en flexibele volumes. U betaalt op basis van het werkelijk gewogen gewicht bij aflevering (weight-correction) &mdash; nooit voor meer dan wat er daadwerkelijk in de kist zit.</p>
         <div class="doelgroep-tags">
@@ -1220,7 +1326,7 @@
         </div>
       </div>
       <div class="doelgroep-card accent-oceaan">
-        <span class="doelgroep-icon">🇪🇸</span>
+        <span class="doelgroep-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 12 4-4 5 3 3-3 4 4-3 3-4-3-2 2"/><path d="m11 15 2 2 3-3"/><path d="M16 8l4 4-3 3"/></svg></span>
         <h3>Spaanse Leveranciers (telers &amp; vispartners)</h3>
         <p>Telers en vispartners werken met ons op basis van een transparant commissiemodel van 8&ndash;10%, zonder verborgen inhoudingen. Via het beveiligde Área de Productores-portaal volgt u uw Liquidaciones en beheert u uw certificaten in het Spaans.</p>
         <div class="doelgroep-tags">
@@ -1236,28 +1342,27 @@
 <section class="esg" id="duurzaamheid">
   <div class="esg-inner">
     <div class="fade-in">
-      <p class="esg-eyebrow">Duurzaamheid &amp; Food Waste Management</p>
       <h2 class="esg-title">Meetbare duurzaamheid, direct inzetbaar in uw retail-tender</h2>
       <p class="esg-body">
         Achter Ibérica Fresh draait een ERP-systeem dat <strong>derving en CO₂-impact live meet</strong>, per productstroom en per levering. De emissiefactoren zijn gebaseerd op openbare data van <strong>Our World in Data</strong>, per productcategorie gekoppeld aan onze eigen inkoop- en dervingscijfers.
       </p>
       <div class="esg-points">
         <div class="esg-point">
-          <div class="esg-point-icon">📉</div>
+          <div class="esg-point-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l7 7 4-4 7 7"/><path d="M15 16h6v-6"/></svg></div>
           <div>
             <h3>Food Waste % per productstroom</h3>
             <p>Derving wordt automatisch vastgelegd bij in- en uitslag in ons 3PL-koelhuis, uitgesplitst naar AGF en zeevruchten.</p>
           </div>
         </div>
         <div class="esg-point">
-          <div class="esg-point-icon">🌍</div>
+          <div class="esg-point-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.7 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.7-4-9s1.5-6.5 4-9Z"/></svg></div>
           <div>
             <h3>CO₂-rapportage op basis van Our World in Data</h3>
             <p>Elke productcategorie krijgt een emissiefactor toegekend, zodat de klimaatimpact van uw bestelling inzichtelijk en onderbouwd is.</p>
           </div>
         </div>
         <div class="esg-point">
-          <div class="esg-point-icon">📄</div>
+          <div class="esg-point-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 16h5"/></svg></div>
           <div>
             <h3>Direct beschikbaar voor retail-tenders</h3>
             <p>Wij leveren een sluitende duurzaamheidsrapportage aan bij offertetrajecten &mdash; geen losse Excel-oefening, maar een export uit hetzelfde systeem waarmee wij ook leveren.</p>
@@ -1291,14 +1396,13 @@
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div class="contact-info fade-in">
-      <p class="section-eyebrow">Contact</p>
       <h2 class="section-title">Contact met uw AGF-importeur</h2>
       <p class="section-body">
         Bent u op zoek naar een betrouwbare AGF-importeur of zeevruchten groothandel uit Spanje? Stuur ons een bericht of neem direct contact op. We reageren altijd binnen één werkdag.
       </p>
 
       <div class="contact-detail">
-        <div class="contact-detail-icon">📍</div>
+        <div class="contact-detail-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></div>
         <div class="contact-detail-text">
           <!-- [4] Specifieke locatie -->
           <strong>Distributiecentrum</strong>
@@ -1306,21 +1410,21 @@
         </div>
       </div>
       <div class="contact-detail">
-        <div class="contact-detail-icon">📧</div>
+        <div class="contact-detail-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6.5 8 6 8-6"/></svg></div>
         <div class="contact-detail-text">
           <strong>E-mail</strong>
           <a href="mailto:info@ibericafresh.nl">info@ibericafresh.nl</a>
         </div>
       </div>
       <div class="contact-detail">
-        <div class="contact-detail-icon">📱</div>
+        <div class="contact-detail-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h3l1.5 4.5-2 1.5a11 11 0 0 0 6.5 6.5l1.5-2 4.5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 6.2 2 2 0 0 1 6 3Z"/></svg></div>
         <div class="contact-detail-text">
           <strong>WhatsApp / Telefoon</strong>
           <a href="https://wa.me/31600000000">+31 6 00 00 00 00</a>
         </div>
       </div>
       <div class="contact-detail">
-        <div class="contact-detail-icon">🕐</div>
+        <div class="contact-detail-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
         <div class="contact-detail-text">
           <strong>Reactietijd</strong>
           <span>Binnen 1 werkdag</span>
@@ -1379,7 +1483,7 @@
           <p class="form-note">We reageren binnen 1 werkdag via e-mail.</p>
         </form>
         <div class="form-success" id="form-success">
-          <div class="check">✅</div>
+          <div class="check"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg></div>
           <h3>Bericht ontvangen!</h3>
           <p>Bedankt voor uw interesse. We nemen binnen één werkdag contact met u op.</p>
           <button class="close-btn" onclick="sluitSucces()">Terug naar de website</button>
@@ -1444,7 +1548,7 @@
     <!-- KVK --><p>KvK: <span id="kvk-nummer">[na oprichting invullen]</span> · BTW: NL[nummer] · Regio Barendrecht</p>
     <p>© 2026 Ibérica Fresh Trading BV · <a href="mailto:info@ibericafresh.nl">info@ibericafresh.nl</a> · <a href="#privacy">Privacyverklaring</a></p>
   </div>
-  <a href="#" class="footer-portal" onclick="openPortalModal(event)">🔐 Área de Productores</a>
+  <a href="#" class="footer-portal" onclick="openPortalModal(event)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Área de Productores</a>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
@@ -1458,7 +1562,7 @@
 <div class="modal-overlay" id="wa-modal">
   <div class="modal wa-modal">
     <button class="modal-close" onclick="closeModal('wa-modal')">×</button>
-    <h3>📲 Wekelijkse prijslijst</h3>
+    <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.6 8.6 0 0 1-3.6-.8L3 20l1-4.6a8.4 8.4 0 0 1-.9-3.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5Z"/></svg>Wekelijkse prijslijst</h3>
     <p>Elke maandag actuele inkoopprijzen, seizoensaanbiedingen en beschikbaarheid, direct op uw telefoon.</p>
     <div class="form-group">
       <label>Uw naam</label>
