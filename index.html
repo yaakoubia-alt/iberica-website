@@ -236,26 +236,32 @@
       max-width: 42ch;
       margin-bottom: 2.5rem;
     }
-    .hero-v2-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-v2-ctas { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
     .btn-primary-v2 {
       background: var(--inkt); color: var(--papier);
-      padding: 1rem 2.25rem; border-radius: var(--radius-sm);
-      font-size: .9375rem; font-weight: 600;
+      padding: 1.05rem 2.5rem; border-radius: var(--radius-sm);
+      font-size: .9375rem; font-weight: 700; letter-spacing: .01em;
       text-decoration: none; display: inline-block;
-      transition: background .2s var(--ease-out), transform .18s var(--ease-out);
+      box-shadow: 0 1px 2px rgba(18,24,26,.06);
+      transition: background .2s var(--ease-out), transform .18s var(--ease-out), box-shadow .2s var(--ease-out);
     }
     @media (hover:hover) and (pointer:fine) {
-      .btn-primary-v2:hover { background: #000; transform: translateY(-1px); }
+      .btn-primary-v2:hover { background: #000; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(18,24,26,.16); }
     }
     .btn-secondary-v2 {
-      border: 1.5px solid var(--inkt-lijn); color: var(--inkt);
-      padding: 1rem 2.25rem; border-radius: var(--radius-sm);
+      color: var(--inkt); border-bottom: 1.5px solid var(--inkt-lijn);
+      padding: 1.05rem 0 .3rem;
       font-size: .9375rem; font-weight: 600;
-      text-decoration: none; display: inline-block;
-      transition: border-color .2s var(--ease-out), background .2s var(--ease-out), transform .18s var(--ease-out);
+      text-decoration: none; display: inline-flex; align-items: center; gap: .4rem;
+      transition: border-color .2s var(--ease-out), color .2s var(--ease-out);
+    }
+    .btn-secondary-v2::after {
+      content: '\2192'; display: inline-block;
+      transition: transform .2s var(--ease-out);
     }
     @media (hover:hover) and (pointer:fine) {
-      .btn-secondary-v2:hover { border-color: var(--inkt); background: rgba(18,24,26,.045); transform: translateY(-1px); }
+      .btn-secondary-v2:hover { border-color: var(--inkt); }
+      .btn-secondary-v2:hover::after { transform: translateX(3px); }
     }
     .hero-v2-images {
       display: grid;
@@ -1892,6 +1898,19 @@
     const nlNum = (n, decimals = 0) => n.toLocaleString('nl-NL', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
     const nlEUR = (n) => '€' + nlNum(n, 0);
 
+    // Korte kleur-flash op gewijzigde waarden zodat "live" ook echt live aanvoelt
+    function flashValue(el) {
+      if (!el) return;
+      el.style.transition = 'none';
+      el.style.color = 'var(--zon)';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.style.transition = 'color .7s ease-out';
+          el.style.color = '';
+        });
+      });
+    }
+
     // ── Impact-model (CO2 + derving) ──
     const IMPACT = {
       KG_PER_PALLET: 650,        // gemiddelde gemengde AGF/zeevruchten-pallet
@@ -1926,18 +1945,26 @@
       const maxCo2 = Math.max(r.co2Trad, r.co2Direct, 1);
       const maxDerving = Math.max(r.dervingTradKg, r.dervingDirectKg, 1);
 
-      document.getElementById('co2-value-trad').textContent = nlNum(r.co2Trad) + ' kg CO₂e';
-      document.getElementById('co2-value-direct').textContent = nlNum(r.co2Direct) + ' kg CO₂e';
+      const co2Trad = document.getElementById('co2-value-trad');
+      const co2Direct = document.getElementById('co2-value-direct');
+      const dervingTrad = document.getElementById('derving-value-trad');
+      const dervingDirect = document.getElementById('derving-value-direct');
+      const co2Saving = document.getElementById('co2-saving-total');
+
+      co2Trad.textContent = nlNum(r.co2Trad) + ' kg CO₂e';
+      co2Direct.textContent = nlNum(r.co2Direct) + ' kg CO₂e';
       document.getElementById('co2-bar-trad').style.width = (r.co2Trad / maxCo2 * 100) + '%';
       document.getElementById('co2-bar-direct').style.width = (r.co2Direct / maxCo2 * 100) + '%';
 
-      document.getElementById('derving-value-trad').textContent = nlNum(r.dervingTradKg) + ' kg';
-      document.getElementById('derving-value-direct').textContent = nlNum(r.dervingDirectKg) + ' kg';
+      dervingTrad.textContent = nlNum(r.dervingTradKg) + ' kg';
+      dervingDirect.textContent = nlNum(r.dervingDirectKg) + ' kg';
       document.getElementById('derving-bar-trad').style.width = (r.dervingTradKg / maxDerving * 100) + '%';
       document.getElementById('derving-bar-direct').style.width = (r.dervingDirectKg / maxDerving * 100) + '%';
 
-      document.getElementById('co2-saving-total').textContent =
+      co2Saving.textContent =
         '−' + nlNum(r.co2Saved) + ' kg CO₂e · −' + nlNum(r.dervingSaved) + ' kg derving';
+
+      [co2Trad, co2Direct, dervingTrad, dervingDirect, co2Saving].forEach(flashValue);
     }
 
     function setImpactPreset(btn, pallets) {
@@ -1997,9 +2024,12 @@
           <strong>${nlEUR(r.savingEUR)} (${nlNum(r.savingPct, 1)}%)</strong>
         </div>
       `;
-      document.getElementById('wc-saving').textContent = nlEUR(r.savingEUR) + ' (' + nlNum(r.savingPct, 1) + '%)';
+      const wcSaving = document.getElementById('wc-saving');
+      wcSaving.textContent = nlEUR(r.savingEUR) + ' (' + nlNum(r.savingPct, 1) + '%)';
       document.getElementById('wc-footnote').textContent =
         'Traditionele importeurs rekenen doorgaans op basis van een vaste, theoretische kistmaat (bruto). Ibérica Fresh weegt elke levering en factureert op het werkelijke netto-afgeleverde gewicht, na aftrek van ' + r.marginLabel + '. Cijfers indicatief o.b.v. representatieve marges per productgroep — exacte marge varieert per partij en seizoen.';
+      flashValue(wcSaving);
+      document.querySelectorAll('#wc-steps .calc-step strong').forEach(flashValue);
     }
 
     document.addEventListener('DOMContentLoaded', function () {
