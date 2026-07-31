@@ -269,10 +269,13 @@
     }
     .hero-v2-img { margin: 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); background: var(--zand); }
     .hero-v2-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
-    .hero-v2-img-a { aspect-ratio: 3 / 4; }
-    .hero-v2-img-b { aspect-ratio: 4 / 3; transform: translateY(3.5rem); align-self: start; }
+    .hero-v2-img-a, .hero-v2-img-b { height: clamp(280px, 30vw, 440px); align-self: start; }
+    .hero-v2-img-a img { object-position: center 78%; }
+    .hero-v2-img-b { transform: translateY(2.25rem); }
+    .hero-v2-img-b img { object-position: center 55%; }
     @media (max-width: 900px) {
       .hero-v2-images { grid-template-columns: 1fr; padding-bottom: 4rem; }
+      .hero-v2-img-a, .hero-v2-img-b { height: 62vw; max-height: 380px; }
       .hero-v2-img-b { transform: none; }
       .hero-v2 { padding: 6rem 6vw 0; }
     }
