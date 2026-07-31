@@ -209,12 +209,11 @@
     .live-dot {
       width: 8px; height: 8px; border-radius: 50%; flex: none;
       background: #2BB673;
-      animation: liveDotPulse 2.2s var(--ease-in-out) infinite;
+      animation: liveDotPulse 1.8s ease-in-out infinite;
     }
     @keyframes liveDotPulse {
-      0%   { box-shadow: 0 0 0 0 rgba(43,182,115,.45); }
-      70%  { box-shadow: 0 0 0 9px rgba(43,182,115,0); }
-      100% { box-shadow: 0 0 0 0 rgba(43,182,115,0); }
+      0%, 100% { opacity: 1;   box-shadow: 0 0 0 0 rgba(43,182,115,.5); }
+      50%      { opacity: .45; box-shadow: 0 0 0 7px rgba(43,182,115,0); }
     }
     .hero-v2-h1 {
       font-family: 'Playfair Display', serif;
