@@ -668,10 +668,17 @@
       background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.1);
       border-radius: var(--radius-lg); padding: 2rem;
     }
-    .esg-metric { display: flex; justify-content: space-between; align-items: baseline; padding: .875rem 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .esg-metric { display: flex; justify-content: space-between; align-items: center; padding: .875rem 0; border-bottom: 1px solid rgba(255,255,255,.08); }
     .esg-metric:last-child { border-bottom: none; }
     .esg-metric-label { font-size: .875rem; color: var(--grijs); }
-    .esg-metric-value { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--zon); text-align: right; }
+    .esg-metric-value {
+      font-size: .875rem; font-weight: 700; letter-spacing: .01em;
+      color: var(--wit); text-align: right;
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .esg-metric-value--live { color: var(--zon); }
+    .esg-metric-value .live-dot { width: 7px; height: 7px; }
     .esg-panel-note { font-size: .75rem; color: rgba(153,167,176,.7); margin-top: 1rem; line-height: 1.6; }
 
     /* ── ÁREA DE PRODUCTORES MODAL ── */
@@ -1557,7 +1564,7 @@
     <div class="esg-panel fade-in">
       <div class="esg-metric">
         <span class="esg-metric-label">Food Waste %</span>
-        <span class="esg-metric-value">Live in ERP</span>
+        <span class="esg-metric-value esg-metric-value--live"><span class="live-dot" aria-hidden="true"></span>Live in ERP</span>
       </div>
       <div class="esg-metric">
         <span class="esg-metric-label">CO₂-factor bron</span>
