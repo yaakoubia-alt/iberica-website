@@ -2774,7 +2774,7 @@
     });
     document.documentElement.lang = lang;
     try { localStorage.setItem('iberica-lang', lang); } catch (err) {}
-    if (window.IbericaCalc) {
+    if (typeof IbericaCalc !== 'undefined') {
       IbericaCalc.updateImpact();
       IbericaCalc.updateWeightCorrection();
     }
